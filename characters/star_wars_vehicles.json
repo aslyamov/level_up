@@ -1,0 +1,105 @@
+{
+  "title": "Техника Звездных Войн",
+  "characters": [
+    {
+      "name": "Лендспидер",
+      "cost": 3,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Landspeeder_35433.png"
+    },
+    {
+      "name": "Спидер-байк",
+      "cost": 6,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Speeder_Bike_35423.png"
+    },
+    {
+      "name": "Шагоход AT-ST",
+      "cost": 9,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/AT-ST_35406.png"
+    },
+    {
+      "name": "Джедайский истребитель",
+      "cost": 12,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Jedi_StarFighter_35434.png"
+    },
+    {
+      "name": "TIE Истребитель",
+      "cost": 15,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Tie_Fighter_01_35416.png"
+    },
+    {
+      "name": "A-Wing",
+      "cost": 18,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/A-Wing_35439.png"
+    },
+    {
+      "name": "Y-Wing",
+      "cost": 21,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Y-Wing_35409.png"
+    },
+    {
+      "name": "TIE Перехватчик",
+      "cost": 24,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Tie_Interceptor_35415.png"
+    },
+    {
+      "name": "TIE Бомбардировщик",
+      "cost": 27,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Tie_Bomber_35421.png"
+    },
+    {
+      "name": "X-Wing",
+      "cost": 30,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/X-Wing_01_35410.png"
+    },
+    {
+      "name": "B-Wing",
+      "cost": 33,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/B-Wing_35405.png"
+    },
+    {
+      "name": "Усовершенствованный TIE",
+      "cost": 36,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Tie_Advanced_35422.png"
+    },
+    {
+      "name": "Республиканский штурмовой корабль",
+      "cost": 39,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Republic_Attack_GunShip_35426.png"
+    },
+    {
+      "name": "Имперский шаттл",
+      "cost": 42,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Imperial_Shuttle_01_35404.png"
+    },
+    {
+      "name": "Раб I",
+      "cost": 45,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Slave_I_35424.png"
+    },
+    {
+      "name": "Тысячелетний Сокол",
+      "cost": 48,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Millenium_Falcon_-_01_35431.png"
+    },
+    {
+      "name": "Шагоход AT-AT",
+      "cost": 51,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/AT-AT_35441.png"
+    },
+    {
+      "name": "Крейсер Мон-Каламари",
+      "cost": 54,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Mon_Calamari_Star_Cruiser_35430.png"
+    },
+    {
+      "name": "Имперский Звездный Разрушитель",
+      "cost": 57,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Imperial_Star_Destroyer_35435.png"
+    },
+    {
+      "name": "Звезда Смерти",
+      "cost": 60,
+      "imageUrl": "https://images.icon-icons.com/335/PNG/96/Death_Star_-_1st_35438.png"
+    }
+  ]
+}

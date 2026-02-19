@@ -1,0 +1,55 @@
+{
+  "title": "Щенячий патруль",
+  "characters": [
+    {
+      "name": "Зума",
+      "cost": 3,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/zuma_canine_patrol_paw_patrol_icon_263868.png"
+    },
+    {
+      "name": "Рокки",
+      "cost": 6,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/rocky_canine_patrol_paw_patrol_icon_263866.png"
+    },
+    {
+      "name": "Трекер",
+      "cost": 9,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/tracker_canine_patrol_paw_patrol_icon_263869.png"
+    },
+    {
+      "name": "Эверест",
+      "cost": 12,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/everest_canine_patrol_paw_patrol_icon_263839.png"
+    },
+    {
+      "name": "Скай",
+      "cost": 15,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/skye_canine_patrol_paw_patrol_icon_263867.png"
+    },
+    {
+      "name": "Крепыш",
+      "cost": 18,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/rubble_canine_patrol_paw_patrol_icon_263842.png"
+    },
+    {
+      "name": "Маршал",
+      "cost": 21,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/marshall_canine_patrol_paw_patrol_icon_263840.png"
+    },
+    {
+      "name": "Гонщик",
+      "cost": 24,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/chase_canine_patrol_paw_patrol_icon_263864.png"
+    },
+    {
+      "name": "Райдер",
+      "cost": 27,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/ryder_canine_patrol_paw_patrol_icon_263849.png"
+    },
+    {
+      "name": "Логотип",
+      "cost": 30,
+      "imageUrl": "https://images.icon-icons.com/4233/PNG/512/canine_patrol_paw_patrol_logo_icon_263850.png"
+    }
+  ]
+}

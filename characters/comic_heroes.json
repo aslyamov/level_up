@@ -1,0 +1,105 @@
+{
+  "title": "Герои Марвел и DC",
+  "characters": [
+    {
+      "name": "Робин",
+      "cost": 3,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/031_Robin_2x_44246.png"
+    },
+    {
+      "name": "Харли Квинн",
+      "cost": 6,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/057_HarleyQuinn_2x_44272.png"
+    },
+    {
+      "name": "Женщина-Кошка",
+      "cost": 9,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/054_CatWoman_2x_44269.png"
+    },
+    {
+      "name": "Сорвиголова",
+      "cost": 12,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/005_Daredevil_2x_44220.png"
+    },
+    {
+      "name": "Черная Вдова",
+      "cost": 15,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/077_BlackWidow_2x_44292.png"
+    },
+    {
+      "name": "Капитан Америка",
+      "cost": 18,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/006_CaptainAmerica_2x_44221.png"
+    },
+    {
+      "name": "Бэтмен",
+      "cost": 21,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/002_Batman_2x_44217.png"
+    },
+    {
+      "name": "Дэдпул",
+      "cost": 24,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/009_Deadpool_2x_44224.png"
+    },
+    {
+      "name": "Росомаха",
+      "cost": 27,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/001_Wolverine_2x_44216.png"
+    },
+    {
+      "name": "Черная Пантера",
+      "cost": 30,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/014_BlackPanther_2x_44229.png"
+    },
+    {
+      "name": "Железный Человек",
+      "cost": 33,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/007_IronMan_2x_44222.png"
+    },
+    {
+      "name": "Человек-Паук",
+      "cost": 36,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/045_Spiderman_2x_44260.png"
+    },
+    {
+      "name": "Аквамен",
+      "cost": 39,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/008_AquaMan_2x_44223.png"
+    },
+    {
+      "name": "Халк",
+      "cost": 42,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/035_Hulk_2x_44250.png"
+    },
+    {
+      "name": "Зеленый Фонарь",
+      "cost": 45,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/004_GreenLantern_2x_44219.png"
+    },
+    {
+      "name": "Чудо-Женщина",
+      "cost": 48,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/051_WonderWoman_2x_44266.png"
+    },
+    {
+      "name": "Флэш",
+      "cost": 51,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/003_Flash_2x_44218.png"
+    },
+    {
+      "name": "Тор",
+      "cost": 54,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/042_Thor_2x_44257.png"
+    },
+    {
+      "name": "Супермен",
+      "cost": 57,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/013_Superman_2x_44228.png"
+    },
+    {
+      "name": "Танос",
+      "cost": 60,
+      "imageUrl": "https://images.icon-icons.com/467/PNG/96/034_Thanos_2x_44249.png"
+    }
+  ]
+}

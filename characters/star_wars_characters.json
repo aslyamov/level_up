@@ -1,0 +1,125 @@
+{
+  "title": "Персонажи Звездных Войн",
+  "characters": [
+    {
+      "name": "Эвок",
+      "cost": 3,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/ewok_icon-icons.com_76943.png"
+    },
+    {
+      "name": "Джава",
+      "cost": 6,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/jawa_icon-icons.com_76960.png"
+    },
+    {
+      "name": "C-3PO",
+      "cost": 9,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/c3p0_icon-icons.com_76936.png"
+    },
+    {
+      "name": "Лобот",
+      "cost": 12,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/lobot_icon-icons.com_76961.png"
+    },
+    {
+      "name": "Гридо",
+      "cost": 15,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/greedo_icon-icons.com_76949.png"
+    },
+    {
+      "name": "Штурмовик",
+      "cost": 18,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/stormtrooper_icon-icons.com_76962.png"
+    },
+    {
+      "name": "Таскенский рейдер",
+      "cost": 21,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/tusken-raider_icon-icons.com_76941.png"
+    },
+    {
+      "name": "Клон-штурмовик",
+      "cost": 24,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/clone-trooper_icon-icons.com_76948.png"
+    },
+    {
+      "name": "R2-D2",
+      "cost": 27,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/r2d2_icon-icons.com_76952.png"
+    },
+    {
+      "name": "Принцесса Лея",
+      "cost": 30,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/princess-leia_icon-icons.com_76940.png"
+    },
+    {
+      "name": "Лэндо Калриссиан",
+      "cost": 33,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/lando-calrissian_icon-icons.com_76938.png"
+    },
+    {
+      "name": "Адмирал Акбар",
+      "cost": 36,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/admiral-ackbar_icon-icons.com_76935.png"
+    },
+    {
+      "name": "Джабба Хатт",
+      "cost": 39,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/jabba-the-hutt_icon-icons.com_76950.png"
+    },
+    {
+      "name": "Хан Соло",
+      "cost": 42,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/han-solo_icon-icons.com_76954.png"
+    },
+    {
+      "name": "Чубакка",
+      "cost": 45,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/chewbacca_icon-icons.com_76942.png"
+    },
+    {
+      "name": "Джанго Фетт",
+      "cost": 48,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/jango-fett_icon-icons.com_76955.png"
+    },
+    {
+      "name": "Боба Фетт",
+      "cost": 51,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/boba-fett_icon-icons.com_76958.png"
+    },
+    {
+      "name": "Квай-Гон Джинн",
+      "cost": 54,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/qui-gon-jinn_icon-icons.com_76946.png"
+    },
+    {
+      "name": "Дарт Мол",
+      "cost": 57,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/darth-maul_icon-icons.com_76953.png"
+    },
+    {
+      "name": "Оби-Ван Кеноби",
+      "cost": 60,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/obiwan-kenobi_icon-icons.com_76945.png"
+    },
+    {
+      "name": "Люк Скайуокер",
+      "cost": 63,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/luke-skywalker_icon-icons.com_76939.png"
+    },
+    {
+      "name": "Дарт Вейдер",
+      "cost": 66,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/darth-vader_icon-icons.com_76959.png"
+    },
+    {
+      "name": "Йода",
+      "cost": 69,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/yoda_icon-icons.com_76947.png"
+    },
+    {
+      "name": "Император Палпатин",
+      "cost": 72,
+      "imageUrl": "https://images.icon-icons.com/1070/PNG/512/emperor-palpatine_icon-icons.com_76937.png"
+    }
+  ]
+}
