@@ -517,7 +517,11 @@ function handleAnswer(correct: boolean): void {
     upsertSave(game);
 
     if (justUnlocked) {
-      showUnlockOverlay(justUnlocked, () => advanceQuestion());
+      const allUnlocked = game.unlockedUpTo >= chars.length - 1;
+      const onContinue  = allUnlocked
+        ? () => { deleteSave(game!.id); renderResults(); _nav('results'); }
+        : () => advanceQuestion();
+      showUnlockOverlay(justUnlocked, onContinue);
       return;
     }
   }
@@ -594,7 +598,7 @@ function renderResults(): void {
       <div class="text-6xl mb-3">🏆</div>
       <h1 class="text-3xl font-black text-yellow-400 mb-1">Игра завершена!</h1>
       <div class="text-gray-400 mb-8 text-sm">
-        ${game.shuffledQuestions.length} вопросов · ${game.totalStars} звёзд набрано
+        ${game.currentIndex} / ${game.shuffledQuestions.length} вопросов · ${game.totalStars} звёзд набрано
       </div>
 
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center w-full max-w-xs mb-6">
