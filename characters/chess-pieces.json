@@ -1,0 +1,35 @@
+{
+  "title": "Шахматные фигуры",
+  "characters": [
+    {
+      "name": "Пешка",
+      "cost": 3,
+      "imageUrl": ""
+    },
+    {
+      "name": "Конь",
+      "cost": 6,
+      "imageUrl": ""
+    },
+    {
+      "name": "Слон",
+      "cost": 12,
+      "imageUrl": ""
+    },
+    {
+      "name": "Ладья",
+      "cost": 18,
+      "imageUrl": ""
+    },
+    {
+      "name": "Ферзь",
+      "cost": 24,
+      "imageUrl": ""
+    },
+    {
+      "name": "Король",
+      "cost": 30,
+      "imageUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "chess-level-up",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "esbuild src/app.ts --bundle --outfile=dist/bundle.js --sourcemap --minify",
+    "dev": "esbuild src/app.ts --bundle --outfile=dist/bundle.js --sourcemap --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  }
+}
