@@ -7,8 +7,10 @@ const SAVES_KEY     = 'clu_saves';
 // ── Question Packs ─────────────────────────────────────────────────────────
 
 export function loadPacks(): QuestionPack[] {
-  try { return JSON.parse(localStorage.getItem(PACKS_KEY) ?? '[]'); }
-  catch { return []; }
+  try {
+    const data = JSON.parse(localStorage.getItem(PACKS_KEY) ?? '[]');
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
 }
 
 export function savePacks(packs: QuestionPack[]): void {
@@ -18,8 +20,10 @@ export function savePacks(packs: QuestionPack[]): void {
 // ── Character Sets ─────────────────────────────────────────────────────────
 
 export function loadCharacterSets(): CharacterSet[] {
-  try { return JSON.parse(localStorage.getItem(CHAR_SETS_KEY) ?? '[]'); }
-  catch { return []; }
+  try {
+    const data = JSON.parse(localStorage.getItem(CHAR_SETS_KEY) ?? '[]');
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
 }
 
 export function saveCharacterSets(sets: CharacterSet[]): void {
@@ -29,8 +33,10 @@ export function saveCharacterSets(sets: CharacterSet[]): void {
 // ── Save Slots ─────────────────────────────────────────────────────────────
 
 export function loadSaves(): SaveSlot[] {
-  try { return JSON.parse(localStorage.getItem(SAVES_KEY) ?? '[]'); }
-  catch { return []; }
+  try {
+    const data = JSON.parse(localStorage.getItem(SAVES_KEY) ?? '[]');
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
 }
 
 export function upsertSave(state: GameState): void {

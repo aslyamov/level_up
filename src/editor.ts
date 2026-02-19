@@ -129,7 +129,7 @@ function drawPackList(el: HTMLElement): void {
   el.querySelectorAll<HTMLElement>('[data-del]').forEach(btn => {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['del']!);
-      showModal(`Удалить пакет «${ps.packs[i]!.title}»?`, () => {
+      showModal(`Удалить пакет «${escapeHtml(ps.packs[i]!.title)}»?`, () => {
         ps.packs.splice(i, 1);
         savePacks(ps.packs);
         drawPackList(el);
@@ -209,7 +209,7 @@ function drawPackEdit(el: HTMLElement): void {
   });
 
   el.querySelector('#pe-del-pack')?.addEventListener('click', () => {
-    showModal(`Удалить пакет «${ps.pack.title}»?`, () => {
+    showModal(`Удалить пакет «${escapeHtml(ps.pack.title)}»?`, () => {
       ps.packs.splice(ps.editIdx, 1);
       savePacks(ps.packs);
       ps.view = 'list';
@@ -438,7 +438,7 @@ function drawCharList(el: HTMLElement): void {
   el.querySelectorAll<HTMLElement>('[data-del]').forEach(btn => {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['del']!);
-      showModal(`Удалить набор «${cs.sets[i]!.title}»?`, () => {
+      showModal(`Удалить набор «${escapeHtml(cs.sets[i]!.title)}»?`, () => {
         cs.sets.splice(i, 1);
         saveCharacterSets(cs.sets);
         drawCharList(el);
@@ -514,7 +514,7 @@ function drawCharEdit(el: HTMLElement): void {
   });
 
   el.querySelector('#ce-del-set')?.addEventListener('click', () => {
-    showModal(`Удалить набор «${cs.set.title}»?`, () => {
+    showModal(`Удалить набор «${escapeHtml(cs.set.title)}»?`, () => {
       cs.sets.splice(cs.editIdx, 1);
       saveCharacterSets(cs.sets);
       cs.view = 'list';
