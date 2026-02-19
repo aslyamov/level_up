@@ -132,7 +132,7 @@ export function renderSetup(el: HTMLElement): void {
         </div>`;
       } else {
         warning.innerHTML = `<div class="mt-2 px-3 py-2 bg-green-950 border border-green-800 rounded-xl text-green-400 text-xs">
-          ✓ Все ${sorted.length} персонажа открываемы (макс. ${maxStars}★ при нужных ${maxNeeded}★)
+          ✓ Все ${sorted.length} ${ruWord(sorted.length, 'персонаж', 'персонажа', 'персонажей')} открываемы (макс. ${maxStars}★ при нужных ${maxNeeded}★)
         </div>`;
       }
     };
@@ -151,6 +151,18 @@ export function renderSetup(el: HTMLElement): void {
   }
 
   el.querySelector('#btn-back')?.addEventListener('click', () => _nav('home'));
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function ruWord(n: number, one: string, few: string, many: string): string {
+  const m = n % 100;
+  if (m >= 11 && m <= 14) return many;
+  switch (n % 10) {
+    case 1:  return one;
+    case 2: case 3: case 4: return few;
+    default: return many;
+  }
 }
 
 // ── Game Init ──────────────────────────────────────────────────────────────
@@ -526,7 +538,6 @@ function handleAnswer(correct: boolean): void {
     }
   }
 
-  upsertSave(game);
   advanceQuestion();
 }
 
