@@ -1,3 +1,5 @@
 node_modules/
 .claude/
 ТЗ.txt
+pgn_to_pack.py
+*.pgn

@@ -71,6 +71,7 @@ function drawPackList(el: HTMLElement): void {
                 <div class="text-xs text-gray-400">${p.questions.length} вопросов · ${p.starsPerCorrect}★ за ответ</div>
               </div>
               <button data-edit="${i}" class="text-sm text-indigo-400 hover:text-indigo-300 transition">Изменить</button>
+              <button data-copy="${i}" class="text-sm text-green-400 hover:text-green-300 transition">Копировать</button>
               <button data-export="${i}" class="text-sm text-gray-400 hover:text-gray-300 transition">Экспорт</button>
               <button data-del="${i}" class="text-sm text-red-400 hover:text-red-300 transition">Удалить</button>
             </div>
@@ -134,6 +135,17 @@ function drawPackList(el: HTMLElement): void {
         savePacks(ps.packs);
         drawPackList(el);
       });
+    });
+  });
+
+  el.querySelectorAll<HTMLElement>('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = parseInt(btn.dataset['copy']!);
+      const copy: QuestionPack = JSON.parse(JSON.stringify(ps.packs[i]));
+      copy.title += ' (копия)';
+      ps.packs.push(copy);
+      savePacks(ps.packs);
+      drawPackList(el);
     });
   });
 }
@@ -244,7 +256,11 @@ function renderQList(questions: Question[]): string {
             </div>
             <div class="text-xs text-gray-400 truncate">${q.answer ? escapeHtml(q.answer) : 'Без ответа'}</div>
           </div>
-          <button data-qdel="${i}" class="text-red-400 hover:text-red-300 text-sm transition px-2 flex-shrink-0">✕</button>
+          <div class="flex gap-0.5 flex-shrink-0">
+            <button data-qup="${i}" class="text-gray-400 hover:text-white transition px-2 py-1 text-sm" title="Вверх">↑</button>
+            <button data-qdn="${i}" class="text-gray-400 hover:text-white transition px-2 py-1 text-sm" title="Вниз">↓</button>
+            <button data-qdel="${i}" class="text-red-400 hover:text-red-300 text-sm transition px-2 py-1">✕</button>
+          </div>
           <span class="text-gray-600 text-sm flex-shrink-0">${open ? '▲' : '▼'}</span>
         </div>
         ${open ? `
@@ -280,7 +296,8 @@ function refreshQList(el: HTMLElement): void {
 function bindQEvents(el: HTMLElement): void {
   el.querySelectorAll<HTMLElement>('[data-qtoggle]').forEach(row => {
     row.addEventListener('click', e => {
-      if ((e.target as HTMLElement).hasAttribute('data-qdel')) return;
+      const t = e.target as HTMLElement;
+      if (t.hasAttribute('data-qdel') || t.hasAttribute('data-qup') || t.hasAttribute('data-qdn')) return;
       const i = parseInt(row.dataset['qtoggle']!);
       ps.expandedQ = ps.expandedQ === i ? -1 : i;
       refreshQList(el);
@@ -294,6 +311,30 @@ function bindQEvents(el: HTMLElement): void {
       ps.pack.questions.splice(i, 1);
       if (ps.expandedQ === i) ps.expandedQ = -1;
       else if (ps.expandedQ > i) ps.expandedQ--;
+      refreshQList(el);
+    });
+  });
+
+  el.querySelectorAll<HTMLElement>('[data-qup]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const i = parseInt(btn.dataset['qup']!);
+      if (i === 0) return;
+      [ps.pack.questions[i - 1], ps.pack.questions[i]] = [ps.pack.questions[i]!, ps.pack.questions[i - 1]!];
+      if      (ps.expandedQ === i)     ps.expandedQ = i - 1;
+      else if (ps.expandedQ === i - 1) ps.expandedQ = i;
+      refreshQList(el);
+    });
+  });
+
+  el.querySelectorAll<HTMLElement>('[data-qdn]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const i = parseInt(btn.dataset['qdn']!);
+      if (i >= ps.pack.questions.length - 1) return;
+      [ps.pack.questions[i + 1], ps.pack.questions[i]] = [ps.pack.questions[i]!, ps.pack.questions[i + 1]!];
+      if      (ps.expandedQ === i)     ps.expandedQ = i + 1;
+      else if (ps.expandedQ === i + 1) ps.expandedQ = i;
       refreshQList(el);
     });
   });
@@ -380,6 +421,7 @@ function drawCharList(el: HTMLElement): void {
                 <div class="text-xs text-gray-400">${s.characters.length} персонажей</div>
               </div>
               <button data-edit="${i}" class="text-sm text-indigo-400 hover:text-indigo-300 transition">Изменить</button>
+              <button data-copy="${i}" class="text-sm text-green-400 hover:text-green-300 transition">Копировать</button>
               <button data-export="${i}" class="text-sm text-gray-400 hover:text-gray-300 transition">Экспорт</button>
               <button data-del="${i}" class="text-sm text-red-400 hover:text-red-300 transition">Удалить</button>
             </div>
@@ -443,6 +485,17 @@ function drawCharList(el: HTMLElement): void {
         saveCharacterSets(cs.sets);
         drawCharList(el);
       });
+    });
+  });
+
+  el.querySelectorAll<HTMLElement>('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = parseInt(btn.dataset['copy']!);
+      const copy: CharacterSet = JSON.parse(JSON.stringify(cs.sets[i]));
+      copy.title += ' (копия)';
+      cs.sets.push(copy);
+      saveCharacterSets(cs.sets);
+      drawCharList(el);
     });
   });
 }
