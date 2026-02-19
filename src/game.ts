@@ -289,7 +289,7 @@ function renderGameScreen(): void {
                 ? (() => { const s = cur.imageUrl ? sanitizeImageUrl(cur.imageUrl) : '';
                     return s
                       ? `<img src="${s}" alt="" class="max-h-full max-w-full object-contain rounded-3xl" />`
-                      : `<div class="w-full h-full bg-gray-700 rounded-3xl flex items-center justify-center text-7xl">♟</div>`; })()
+                      : `<div class="w-full h-full bg-gray-700 rounded-3xl flex items-center justify-center text-7xl">👤</div>`; })()
                 : `<div class="w-full h-full bg-gray-800 rounded-3xl flex items-center justify-center text-6xl opacity-40">🔒</div>`}
             </div>
             ${cur
@@ -405,7 +405,7 @@ function showAllCharactersOverlay(): void {
       ${unlocked ? 'bg-gray-700' : 'bg-gray-800 opacity-30'}`;
     return safe
       ? `<img src="${safe}" alt="" class="${cls}" />`
-      : `<div class="${fallbackCls}">${unlocked ? '♟' : '🔒'}</div>`;
+      : `<div class="${fallbackCls}">${unlocked ? '👤' : '🔒'}</div>`;
   };
 
   overlay.innerHTML = `

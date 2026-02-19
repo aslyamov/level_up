@@ -39,8 +39,8 @@ function renderHome(): void {
   el.innerHTML = `
     <div class="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-950">
 
-      <div class="text-8xl mb-4 select-none">♟</div>
-      <h1 class="text-5xl font-black tracking-tight mb-2">Chess Level Up</h1>
+      <div class="text-8xl mb-4 select-none">🎯</div>
+      <h1 class="text-5xl font-black tracking-tight mb-2">Level Up</h1>
       <p class="text-gray-400 mb-12 text-center text-sm">
         Отвечай на вопросы — открывай новых персонажей!
       </p>

@@ -598,7 +598,7 @@ function renderCList(chars: Character[]): string {
         <div class="flex items-center gap-3 px-4 py-3 cursor-pointer select-none" data-ctoggle="${i}">
           ${safeImg
             ? `<img src="${safeImg}" class="w-8 h-8 object-contain rounded flex-shrink-0" />`
-            : `<div class="w-8 h-8 bg-gray-700 rounded flex-shrink-0 flex items-center justify-center text-sm">♟</div>`}
+            : `<div class="w-8 h-8 bg-gray-700 rounded flex-shrink-0 flex items-center justify-center text-sm">👤</div>`}
           <div class="flex-1 min-w-0">
             <div class="text-sm font-medium ${c.name ? 'text-white' : 'text-gray-500 italic'}">
               ${c.name ? escapeHtml(c.name) : 'Без имени'}
