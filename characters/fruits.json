@@ -1,0 +1,105 @@
+{
+  "title": "Фрукты и ягоды",
+  "characters": [
+    {
+      "name": "Черника",
+      "cost": 3,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/blueberry_food_fruit_icon_182563.png"
+    },
+    {
+      "name": "Малина",
+      "cost": 6,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/raspberry_food_fruit_icon_182572.png"
+    },
+    {
+      "name": "Вишня",
+      "cost": 9,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/cherry_food_fruit_icon_182562.png"
+    },
+    {
+      "name": "Клубника",
+      "cost": 12,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/strawberry_food_fruit_icon_182557.png"
+    },
+    {
+      "name": "Киви",
+      "cost": 15,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/kiwi_food_fruit_icon_182559.png"
+    },
+    {
+      "name": "Персик",
+      "cost": 18,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/peach_food_fruit_icon_182566.png"
+    },
+    {
+      "name": "Хурма",
+      "cost": 21,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/persimmon_food_fruit_icon_182564.png"
+    },
+    {
+      "name": "Яблоко",
+      "cost": 24,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/apple_food_fruit_icon_182561.png"
+    },
+    {
+      "name": "Груша",
+      "cost": 27,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/pear_food_fruit_icon_182565.png"
+    },
+    {
+      "name": "Апельсин (Вариант 1)",
+      "cost": 30,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/orange_food_fruit_icon_182571.png"
+    },
+    {
+      "name": "Апельсин (Вариант 2)",
+      "cost": 33,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/food_fruit_orange_icon_182553.png"
+    },
+    {
+      "name": "Гранат",
+      "cost": 36,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/pomegranate_food_fruit_icon_182574.png"
+    },
+    {
+      "name": "Авокадо",
+      "cost": 39,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/avocado_food_fruit_icon_182570.png"
+    },
+    {
+      "name": "Манго",
+      "cost": 42,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/mango_food_fruit_icon_182558.png"
+    },
+    {
+      "name": "Банан",
+      "cost": 45,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/banana_food_fruit_icon_182569.png"
+    },
+    {
+      "name": "Виноград",
+      "cost": 48,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/food_fruit_grape_icon_182560.png"
+    },
+    {
+      "name": "Батат",
+      "cost": 51,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/sweet_potato_food_fruit_icon_182568.png"
+    },
+    {
+      "name": "Кокос",
+      "cost": 54,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/coconut_food_fruit_icon_182573.png"
+    },
+    {
+      "name": "Дыня",
+      "cost": 57,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/melon_food_fruit_icon_182556.png"
+    },
+    {
+      "name": "Арбуз",
+      "cost": 60,
+      "imageUrl": "https://images.icon-icons.com/2879/PNG/512/watermelon_food_fruit_icon_182567.png"
+    }
+  ]
+}

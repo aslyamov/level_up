@@ -1,0 +1,55 @@
+{
+  "title": "Хэллоуин",
+  "characters": [
+    {
+      "name": "Свеча",
+      "cost": 3,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734820.png"
+    },
+    {
+      "name": "Циклоп",
+      "cost": 6,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734808.png"
+    },
+    {
+      "name": "Тыква",
+      "cost": 9,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734790.png"
+    },
+    {
+      "name": "Призрак",
+      "cost": 12,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734800.png"
+    },
+    {
+      "name": "Яд",
+      "cost": 15,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734802.png"
+    },
+    {
+      "name": "Кость",
+      "cost": 18,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734804.png"
+    },
+    {
+      "name": "Конфеты",
+      "cost": 21,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734807.png"
+    },
+    {
+      "name": "Костюм призрака",
+      "cost": 24,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734809.png"
+    },
+    {
+      "name": "Скелет",
+      "cost": 27,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734810.png"
+    },
+    {
+      "name": "Мумия",
+      "cost": 30,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/17734/17734811.png"
+    }
+  ]
+}
