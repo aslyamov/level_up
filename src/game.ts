@@ -519,7 +519,7 @@ function handleAnswer(correct: boolean): void {
     if (justUnlocked) {
       const allUnlocked = game.unlockedUpTo >= chars.length - 1;
       const onContinue  = allUnlocked
-        ? () => { deleteSave(game!.id); renderResults(); _nav('results'); }
+        ? () => { game!.currentIndex++; deleteSave(game!.id); renderResults(); _nav('results'); }
         : () => advanceQuestion();
       showUnlockOverlay(justUnlocked, onContinue);
       return;
