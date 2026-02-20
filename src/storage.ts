@@ -19,7 +19,8 @@ export function loadPacks(): QuestionPack[] {
 }
 
 export function savePacks(packs: QuestionPack[]): void {
-  localStorage.setItem(PACKS_KEY, JSON.stringify(packs));
+  try { localStorage.setItem(PACKS_KEY, JSON.stringify(packs)); }
+  catch { alert('Не удалось сохранить: хранилище переполнено.'); }
 }
 
 // ── Character Sets ─────────────────────────────────────────────────────────
@@ -36,7 +37,8 @@ export function loadCharacterSets(): CharacterSet[] {
 }
 
 export function saveCharacterSets(sets: CharacterSet[]): void {
-  localStorage.setItem(CHAR_SETS_KEY, JSON.stringify(sets));
+  try { localStorage.setItem(CHAR_SETS_KEY, JSON.stringify(sets)); }
+  catch { alert('Не удалось сохранить: хранилище переполнено.'); }
 }
 
 // ── Save Slots ─────────────────────────────────────────────────────────────
@@ -74,12 +76,14 @@ export function upsertSave(state: GameState): void {
   if (idx >= 0) saves[idx] = slot;
   else saves.unshift(slot);
 
-  localStorage.setItem(SAVES_KEY, JSON.stringify(saves));
+  try { localStorage.setItem(SAVES_KEY, JSON.stringify(saves)); }
+  catch { alert('Не удалось сохранить прогресс: хранилище переполнено.'); }
 }
 
 export function deleteSave(id: string): void {
   const filtered = loadSaves().filter(s => s.id !== id);
-  localStorage.setItem(SAVES_KEY, JSON.stringify(filtered));
+  try { localStorage.setItem(SAVES_KEY, JSON.stringify(filtered)); }
+  catch { /* ignore — deletion is best-effort */ }
 }
 
 // ── Builtin Data ───────────────────────────────────────────────────────────

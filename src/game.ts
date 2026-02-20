@@ -628,9 +628,10 @@ function updateTimerDisplay(): void {
   const el = document.getElementById('timer-display');
   if (!el) return;
   el.textContent = String(timerRemaining);
-  if      (timerRemaining <= 5)  el.className = 'text-6xl font-black text-red-500 leading-none';
-  else if (timerRemaining <= 10) el.className = 'text-6xl font-black text-yellow-400 leading-none';
-  else                           el.className = 'text-6xl font-black text-white leading-none';
+  el.classList.remove('text-red-500', 'text-yellow-400', 'text-white');
+  if      (timerRemaining <= 5)  el.classList.add('text-red-500');
+  else if (timerRemaining <= 10) el.classList.add('text-yellow-400');
+  else                           el.classList.add('text-white');
 }
 
 // ── Answer Handling ────────────────────────────────────────────────────────
@@ -638,6 +639,9 @@ function updateTimerDisplay(): void {
 function handleAnswer(correct: boolean): void {
   if (!game) return;
   stopTimer();
+  // Prevent double-click
+  (document.getElementById('btn-correct') as HTMLButtonElement | null)?.toggleAttribute('disabled', true);
+  (document.getElementById('btn-wrong')   as HTMLButtonElement | null)?.toggleAttribute('disabled', true);
 
   if (correct) {
     game.totalStars += game.pack.starsPerCorrect;
