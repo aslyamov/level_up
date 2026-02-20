@@ -347,44 +347,44 @@ function renderGameScreen(): void {
       </div>`;
 
   } else {
-    // ── NON-CHESS LAYOUT: full-screen center + right panel ────────────────
+    // ── NON-CHESS LAYOUT: image + panel (mirrors chess layout) ───────────
     el.innerHTML = `
-      <div class="h-screen flex flex-col bg-gray-950">
-        <div class="flex flex-1 min-h-0">
+      <div class="h-screen flex items-center justify-center bg-gray-950 overflow-hidden"
+           style="--sz:min(calc(100vh - 24px),calc(100vw - 400px),780px)">
+        <div class="flex gap-4">
 
-          <!-- Center: question -->
-          <div class="flex-1 flex flex-col items-center justify-center gap-5 p-8 overflow-y-auto">
-            ${game.timerSeconds > 0
-              ? `<div id="timer-display" class="text-6xl font-black text-white leading-none">${game.timerSeconds}</div>`
-              : ''}
-            ${img(q.imageUrl, 'max-h-[65vh] max-w-full w-full object-contain rounded-2xl') ?? ''}
-            <div class="text-2xl font-semibold text-center max-w-2xl leading-relaxed">
-              ${escapeHtml(q.text)}
-            </div>
-            <button id="btn-show-answer"
-              class="py-3 px-10 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-lg transition">
-              Показать ответ
-            </button>
-            <div id="answer-block" class="hidden w-full max-w-xl flex flex-col gap-4">
-              <div class="bg-gray-800 border border-gray-700 rounded-xl p-4 text-center">
-                <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Ответ</div>
-                <div class="text-xl font-bold text-green-400">${escapeHtml(q.answer ?? '')}</div>
-              </div>
-              <div class="flex gap-3">
-                <button id="btn-wrong"
-                  class="flex-1 py-4 bg-red-700 hover:bg-red-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-red-950/50 flex flex-col items-center gap-0.5">
-                  <span class="text-2xl">✕</span><span>Неверно</span>
-                </button>
-                <button id="btn-correct"
-                  class="flex-1 py-4 bg-green-700 hover:bg-green-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-green-950/50 flex flex-col items-center gap-0.5">
-                  <span class="text-2xl">✓</span><span>Правильно +${game.pack.starsPerCorrect}★</span>
-                </button>
-              </div>
-            </div>
+          <!-- Image (mirrors board position) -->
+          <div class="rounded-xl shadow-2xl overflow-hidden flex-shrink-0 bg-gray-900 flex items-center justify-center"
+               style="width:var(--sz);height:var(--sz)">
+            ${img(q.imageUrl, 'max-w-full max-h-full object-contain')
+              ?? `<div class="text-center p-8 text-3xl font-bold text-white leading-snug">${escapeHtml(q.text)}</div>`}
           </div>
 
-          <!-- Right panel -->
-          <div class="w-[300px] flex-shrink-0 bg-gray-900 border-l border-gray-800 flex flex-col">
+          <!-- Panel: same structure as chess panel -->
+          <div class="w-[360px] flex-shrink-0 bg-gray-900 rounded-xl border border-gray-800 flex flex-col overflow-hidden"
+               style="height:var(--sz)">
+
+            <!-- Question text + show-answer / answer -->
+            <div class="px-4 py-4 border-b border-gray-800 flex-shrink-0 flex flex-col gap-3">
+              ${game.timerSeconds > 0
+                ? `<div id="timer-display" class="text-4xl font-black text-white text-center leading-none">${game.timerSeconds}</div>`
+                : ''}
+              <div class="text-lg font-semibold text-center leading-snug">
+                ${escapeHtml(q.text)}
+              </div>
+              <button id="btn-show-answer"
+                class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-sm transition">
+                Показать ответ
+              </button>
+              <div id="answer-block" class="hidden">
+                <div class="bg-gray-800 border border-gray-700 rounded-xl p-3 text-center">
+                  <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Ответ</div>
+                  <div class="text-base font-bold text-green-400">${escapeHtml(q.answer ?? '')}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Characters: column -->
             <div class="flex-1 min-h-0 flex flex-col items-center justify-evenly px-6 py-2 overflow-hidden">
               <div class="flex flex-col items-center gap-1 w-full">
                 <div class="${charBoxCls(cur)}">
@@ -400,11 +400,18 @@ function renderGameScreen(): void {
                 ${next ? renderCharMeta(next, true) : `<div class="text-xs text-gray-500 text-center">Финал!</div>`}
               </div>
             </div>
-            <div class="px-4 pb-4 pt-3 border-t border-gray-800 flex-shrink-0 space-y-2">
-              ${bottomControls('h-11')}
-            </div>
-          </div>
 
+            <!-- Bottom: controls -->
+            <div class="px-4 py-3 border-t border-gray-800 flex-shrink-0 space-y-2 relative">
+              <div id="nav-lock-indicator" class="hidden absolute -top-5 left-0 right-0 text-xs text-yellow-500 text-center">🔒 Заблокировано</div>
+              <div id="answer-buttons" class="hidden items-center gap-1.5">
+                <button id="btn-correct" class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-green-400 rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✔</button>
+                <button id="btn-wrong"   class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-red-400   rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✕</button>
+              </div>
+              ${bottomControls('h-10')}
+            </div>
+
+          </div>
         </div>
       </div>`;
   }
@@ -463,19 +470,21 @@ function renderGameScreen(): void {
   if (q.solutionMovesUci && q.solutionMovesUci.length > 0) {
     el.querySelector('#btn-nav-prev')?.addEventListener('click', () => applyBoardMove(boardMoveIdx - 1));
     el.querySelector('#btn-nav-next')?.addEventListener('click', () => applyBoardMove(boardMoveIdx + 1));
-
-    navKeyHandler = (e: KeyboardEvent) => {
-      if ((e.key === 'l' || e.key === 'L' || e.key === 'д' || e.key === 'Д') && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        setNavLock(!navLocked);
-      }
-    };
-    document.addEventListener('keydown', navKeyHandler);
   }
+
+  navKeyHandler = (e: KeyboardEvent) => {
+    if ((e.key === 'l' || e.key === 'L' || e.key === 'д' || e.key === 'Д') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      setNavLock(!navLocked);
+    }
+  };
+  document.addEventListener('keydown', navKeyHandler);
 
   // Events
   el.querySelector('#btn-show-answer')?.addEventListener('click', () => {
     el.querySelector('#btn-show-answer')?.classList.add('hidden');
     el.querySelector('#answer-block')?.classList.remove('hidden');
+    const ab = el.querySelector('#answer-buttons') as HTMLElement | null;
+    if (ab) { ab.classList.remove('hidden'); ab.classList.add('flex'); }
     stopTimer();
   });
 
