@@ -3,3 +3,4 @@ node_modules/
 ТЗ.txt
 pgn_to_pack.py
 *.pgn
+*.ini
