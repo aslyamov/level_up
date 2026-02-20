@@ -11,8 +11,11 @@ export interface CharacterSet {
 
 export interface Question {
   text: string;
-  answer: string;
+  answer?: string;
   imageUrl?: string;
+  fen?: string;
+  boardOrientation?: 'white' | 'black';
+  solutionMovesUci?: string[]; // UCI moves of the solution: ['e2e4', 'e7e5', ...]
 }
 
 export interface QuestionPack {
@@ -27,6 +30,7 @@ export interface GameState {
   pack: QuestionPack;
   characterSet: CharacterSet;
   shuffledQuestions: Question[];
+  spareQuestions: Question[];
   currentIndex: number;
   totalStars: number;
   timerSeconds: number;

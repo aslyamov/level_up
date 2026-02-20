@@ -2,12 +2,16 @@
   "name": "chess-level-up",
   "version": "1.0.0",
   "scripts": {
-    "build": "esbuild src/app.ts --bundle --outfile=dist/bundle.js --sourcemap --minify",
+    "build": "esbuild src/app.ts --bundle --outfile=dist/bundle.js --sourcemap --minify && esbuild src/chessground-styles.css --bundle --outfile=dist/chessground.css",
     "dev": "esbuild src/app.ts --bundle --outfile=dist/bundle.js --sourcemap --watch",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "esbuild": "^0.27.3",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@lichess-org/chessground": "^10.0.2",
+    "chess.js": "^1.4.0"
   }
 }

@@ -1,5 +1,9 @@
 import type { GameState, QuestionPack, CharacterSet, Character, Screen } from './types';
 import { escapeHtml, sanitizeImageUrl, showModal } from './utils';
+import { mountBoard } from './board';
+import type { Api } from '@lichess-org/chessground/api';
+import type { Key } from '@lichess-org/chessground/types';
+import { Chess } from 'chess.js';
 import {
   loadPacks, loadCharacterSets,
   loadBuiltinPacks, loadBuiltinCharacterSets,
@@ -12,6 +16,10 @@ let game: GameState | null = null;
 let timerInterval: number | null = null;
 let timerRemaining = 0;
 let _nav: (s: Screen) => void = () => { /* no-op until app sets it */ };
+let boardApi: Api | null = null;
+let boardMoveIdx = 0;
+let navChess: Chess | null = null;
+let navKeyHandler: ((e: KeyboardEvent) => void) | null = null;
 
 let builtinPacks: QuestionPack[] = [];
 let builtinSets: CharacterSet[] = [];
@@ -122,18 +130,25 @@ export function renderSetup(el: HTMLElement): void {
       const maxNeeded  = sorted[sorted.length - 1]?.cost ?? 0;
       const unlockable = sorted.filter(c => c.cost <= maxStars).length;
 
+      const btnStart = el.querySelector('#btn-start') as HTMLButtonElement;
       if (unlockable === 0) {
         warning.innerHTML = `<div class="mt-2 px-3 py-2 bg-red-950 border border-red-800 rounded-xl text-red-300 text-xs">
           ⛔ Нельзя открыть ни одного персонажа — макс. ${maxStars}★, а самый дешёвый стоит ${sorted[0]?.cost ?? 0}★
         </div>`;
+        btnStart.disabled = true;
+        btnStart.classList.add('opacity-50', 'cursor-not-allowed');
       } else if (maxStars < maxNeeded) {
         warning.innerHTML = `<div class="mt-2 px-3 py-2 bg-yellow-950 border border-yellow-800 rounded-xl text-yellow-300 text-xs">
           ⚠ Можно открыть ${unlockable} из ${sorted.length} персонажей (макс. ${maxStars}★, нужно ${maxNeeded}★)
         </div>`;
+        btnStart.disabled = false;
+        btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
       } else {
         warning.innerHTML = `<div class="mt-2 px-3 py-2 bg-green-950 border border-green-800 rounded-xl text-green-400 text-xs">
           ✓ Все ${sorted.length} ${ruWord(sorted.length, 'персонаж', 'персонажа', 'персонажей')} открываемы (макс. ${maxStars}★ при нужных ${maxNeeded}★)
         </div>`;
+        btnStart.disabled = false;
+        btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
       }
     };
 
@@ -142,7 +157,7 @@ export function renderSetup(el: HTMLElement): void {
     updateCompat();
 
     el.querySelector('#btn-start')?.addEventListener('click', () => {
-      const playerName = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim();
+      const playerName = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim().slice(0, 40);
       const packIdx    = parseInt(selPack.value);
       const setIdx     = parseInt(selChars.value);
       const timer      = Math.max(0, parseInt((el.querySelector('#inp-timer') as HTMLInputElement).value) || 0);
@@ -178,12 +193,19 @@ function shuffle<T>(arr: T[]): T[] {
 
 function startGame(pack: QuestionPack, characterSet: CharacterSet, timerSeconds: number, playerName: string): void {
   const sortedChars = [...characterSet.characters].sort((a, b) => a.cost - b.cost);
+  const allShuffled = shuffle(pack.questions);
+  const maxCost    = sortedChars.at(-1)?.cost ?? 0;
+  const minNeeded  = Math.ceil(maxCost / pack.starsPerCorrect);
+  const hasExtra   = pack.questions.length > sortedChars.length;
+  const questions  = hasExtra ? allShuffled.slice(0, minNeeded) : allShuffled;
+  const spares     = hasExtra ? allShuffled.slice(minNeeded)    : [];
   game = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
     playerName,
     pack,
     characterSet: { ...characterSet, characters: sortedChars },
-    shuffledQuestions: shuffle(pack.questions),
+    shuffledQuestions: questions,
+    spareQuestions: spares,
     currentIndex: 0,
     totalStars: 0,
     timerSeconds,
@@ -198,6 +220,7 @@ export function resumeGame(id: string): void {
   const slot = loadSaves().find(s => s.id === id);
   if (!slot) return;
   game = slot.state;
+  game.spareQuestions ??= [];
   _nav('game');
   renderGameScreen();
 }
@@ -208,6 +231,10 @@ function renderGameScreen(): void {
   if (!game) return;
 
   stopTimer();
+  boardApi = null;
+  boardMoveIdx = 0;
+  navChess = null;
+  if (navKeyHandler) { document.removeEventListener('keydown', navKeyHandler); navKeyHandler = null; }
 
   const el    = document.getElementById('screen-game')!;
   const chars = game.characterSet.characters;
@@ -215,146 +242,235 @@ function renderGameScreen(): void {
   const next  = chars[game.unlockedUpTo + 1] ?? null;
   const q     = game.shuffledQuestions[game.currentIndex]!;
 
-  const prevCost = cur?.cost ?? 0;
-  const nextCost = next?.cost ?? prevCost;
-  const progressPct = next
-    ? Math.min(100, Math.max(0, ((game.totalStars - prevCost) / (nextCost - prevCost)) * 100))
-    : 100;
-  const starsToNext = next ? Math.max(0, next.cost - game.totalStars) : 0;
 
   const img = (url?: string, cls = '') => {
     const safe = url ? sanitizeImageUrl(url) : '';
     return safe ? `<img src="${safe}" alt="" class="${cls}" />` : null;
   };
 
-  el.innerHTML = `
-    <div class="h-screen flex flex-col bg-gray-950">
+  // ── helpers for character cards (used in both layouts) ──────────────────
+  const renderCharImg = (c: typeof cur, grayscale = false) => {
+    if (!c) return `<span class="text-5xl opacity-30">🔒</span>`;
+    const s = c.imageUrl ? sanitizeImageUrl(c.imageUrl) : '';
+    return s
+      ? `<img src="${s}" alt="" class="w-full h-full object-contain${grayscale ? ' grayscale' : ''}" />`
+      : `<span class="text-5xl">👤</span>`;
+  };
+  const renderCharMeta = (c: typeof cur, muted = false) =>
+    c ? `<div class="text-xs font-semibold text-center truncate w-full${muted ? ' text-gray-400' : ''}">${escapeHtml(c.name)}</div>
+         <div class="text-yellow-400 text-xs${muted ? ' opacity-60' : ''}">★ ${c.cost}</div>`
+      : `<div class="text-xs text-gray-600 text-center">—</div>`;
+  // Container class: solid bg for real characters, dashed outline for locked
+  const charBoxCls = (c: typeof cur) => c
+    ? 'w-[160px] h-[160px] rounded-xl overflow-hidden bg-gray-800 flex items-center justify-center flex-shrink-0'
+    : 'w-[160px] h-[160px] rounded-xl border-2 border-dashed border-gray-700 flex items-center justify-center flex-shrink-0';
 
-      <!-- Main -->
-      <div class="flex flex-1 min-h-0">
-
-        <!-- Center: question -->
-        <div class="flex-1 flex flex-col items-center justify-center gap-5 p-8 overflow-y-auto">
-
-          ${game.timerSeconds > 0
-            ? `<div id="timer-display" class="text-6xl font-black text-white leading-none">${game.timerSeconds}</div>`
-            : ''}
-
-          ${img(q.imageUrl, 'max-h-[55vh] max-w-full w-full object-contain rounded-2xl') ?? ''}
-
-          <div class="text-2xl font-semibold text-center max-w-2xl leading-relaxed">
-            ${escapeHtml(q.text)}
-          </div>
-
-          <button id="btn-show-answer"
-            class="py-3 px-10 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-lg transition">
-            Показать ответ
-          </button>
-
-          <div id="answer-block" class="hidden w-full max-w-xl flex flex-col gap-4">
-            <div class="bg-gray-800 border border-gray-700 rounded-xl p-4 text-center">
-              <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Ответ</div>
-              <div class="text-xl font-bold text-green-400">${escapeHtml(q.answer)}</div>
-            </div>
-            <div class="flex gap-3">
-              <button id="btn-wrong"
-                class="flex-1 py-4 bg-red-700 hover:bg-red-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-red-950/50 flex flex-col items-center gap-0.5">
-                <span class="text-2xl">✕</span>
-                <span>Неверно</span>
-              </button>
-              <button id="btn-correct"
-                class="flex-1 py-4 bg-green-700 hover:bg-green-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-green-950/50 flex flex-col items-center gap-0.5">
-                <span class="text-2xl">✓</span>
-                <span>Правильно +${game.pack.starsPerCorrect}★</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right panel: character progression -->
-        <div class="w-[27%] flex-shrink-0 bg-gray-900 border-l border-gray-800 flex flex-col">
-
-          <!-- Stars -->
-          <div class="px-4 py-3 border-b border-gray-800 text-center flex-shrink-0">
-            <div class="text-xs text-gray-500 uppercase tracking-widest mb-1">Звёзды</div>
-            <div class="text-yellow-400 font-black text-4xl">★ ${game.totalStars}</div>
-          </div>
-
-          <!-- Current character -->
-          <div class="flex-1 flex flex-col items-center px-4 pt-3 pb-2 min-h-0">
-            <div class="text-xs text-gray-500 uppercase tracking-widest mb-2 flex-shrink-0">Текущий</div>
-            <div class="flex-1 w-full min-h-0 flex items-center justify-center">
-              ${cur
-                ? (() => { const s = cur.imageUrl ? sanitizeImageUrl(cur.imageUrl) : '';
-                    return s
-                      ? `<img src="${s}" alt="" class="max-h-full max-w-full object-contain rounded-3xl" />`
-                      : `<div class="w-full h-full bg-gray-700 rounded-3xl flex items-center justify-center text-7xl">👤</div>`; })()
-                : `<div class="w-full h-full bg-gray-800 rounded-3xl flex items-center justify-center text-6xl opacity-40">🔒</div>`}
-            </div>
-            ${cur
-              ? `<div class="font-black text-xl text-center mt-2 flex-shrink-0">${escapeHtml(cur.name)}</div>
-                 <div class="text-yellow-400 text-sm mt-0.5 flex-shrink-0">★ ${cur.cost}</div>`
-              : `<div class="text-gray-600 text-sm mt-2 flex-shrink-0">Ещё не открыто</div>`}
-          </div>
-
-          <!-- Progress bar -->
-          <div class="px-4 py-2 flex-shrink-0">
-            ${next
-              ? `<div class="text-xs text-gray-500 text-center mb-1.5">До ${escapeHtml(next.name)}: ${starsToNext}★</div>
-                 <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                   <div class="bg-yellow-400 h-3 rounded-full transition-all duration-500" style="width:${progressPct}%"></div>
-                 </div>`
-              : `<div class="text-center text-yellow-400 font-bold text-sm">✦ Максимум достигнут! ✦</div>`}
-          </div>
-
-          <!-- Next character -->
-          <div class="flex-1 flex flex-col items-center px-4 pt-2 pb-3 border-t border-gray-800 min-h-0">
-            <div class="text-xs text-gray-500 uppercase tracking-widest mb-2 flex-shrink-0">Следующий</div>
-            <div class="flex-1 w-full min-h-0 flex items-center justify-center">
-              ${next
-                ? (() => { const s = next.imageUrl ? sanitizeImageUrl(next.imageUrl) : '';
-                    return s
-                      ? `<img src="${s}" alt="" class="max-h-full max-w-full object-contain rounded-3xl opacity-35 grayscale" />`
-                      : `<div class="w-full h-full bg-gray-800 rounded-3xl flex items-center justify-center text-7xl opacity-35">🔒</div>`; })()
-                : `<div class="w-full h-full bg-gray-800 rounded-3xl flex items-center justify-center text-8xl">🏆</div>`}
-            </div>
-            ${next
-              ? `<div class="font-bold text-lg text-center mt-2 text-gray-400 flex-shrink-0">${escapeHtml(next.name)}</div>
-                 <div class="text-yellow-400 text-sm mt-0.5 opacity-50 flex-shrink-0">★ ${next.cost}</div>`
-              : `<div class="font-bold text-lg text-center mt-2 text-gray-500 flex-shrink-0">Финал!</div>`}
-          </div>
-
-          <!-- Bottom controls -->
-          <div class="px-4 pb-4 flex-shrink-0 border-t border-gray-800 pt-3 space-y-2">
-            <button id="btn-all-chars"
-              class="w-full h-11 bg-gray-800 hover:bg-gray-700 text-white rounded-xl font-semibold transition border border-gray-700 hover:border-gray-500 flex items-center justify-center gap-2">
-              <span class="text-lg">🏅</span> Все персонажи
-            </button>
-
-            <div class="flex gap-2">
-              <!-- Question progress -->
-              <div class="relative flex-1 h-11 rounded-xl overflow-hidden bg-gray-800 border border-gray-700">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-500"
-                  style="width:${Math.round(((game.currentIndex + 1) / game.shuffledQuestions.length) * 100)}%"></div>
-                <span class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white drop-shadow">
-                  ${game.currentIndex + 1} / ${game.shuffledQuestions.length}
-                </span>
-              </div>
-
-              <!-- Exit -->
-              <button id="btn-exit"
-                class="h-11 px-4 bg-gray-800 hover:bg-red-950 text-gray-300 hover:text-red-300 rounded-xl font-semibold text-sm transition border border-gray-700 hover:border-red-800 flex-shrink-0">
-                Выход
-              </button>
-            </div>
-          </div>
-
-        </div>
-
+  const bottomControls = (h: string) => `
+    <button id="btn-all-chars"
+      class="w-full ${h} bg-gray-800 hover:bg-gray-700 text-white rounded-xl font-semibold transition border border-gray-700 hover:border-gray-500 flex items-center justify-center gap-2 text-sm">
+      <span>🏅</span> Все персонажи
+    </button>
+    <div class="flex gap-2">
+      <div class="relative flex-1 ${h} rounded-xl overflow-hidden bg-gray-800 border border-gray-700">
+        <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-500"
+             style="width:${Math.round(((game!.currentIndex + 1) / game!.shuffledQuestions.length) * 100)}%"></div>
+        <span class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white drop-shadow">
+          ${game!.currentIndex + 1} / ${game!.shuffledQuestions.length}
+        </span>
       </div>
-    </div>
-  `;
+      <button id="btn-exit"
+        class="${h} px-4 bg-gray-800 hover:bg-red-950 text-gray-300 hover:text-red-300 rounded-xl font-semibold text-sm transition border border-gray-700 hover:border-red-800 flex-shrink-0">
+        Выход
+      </button>
+    </div>`;
+
+  if (q.fen) {
+    // ── CHESS LAYOUT: centered board + panel (CVT-style) ─────────────────
+    el.innerHTML = `
+      <div class="h-screen flex items-center justify-center bg-gray-950 overflow-hidden"
+           style="--sz:min(calc(100vh - 24px),calc(100vw - 400px),780px)">
+        <div class="flex gap-4">
+
+          <!-- Board -->
+          <div id="board-container"
+               class="rounded-xl shadow-2xl overflow-hidden flex-shrink-0"
+               style="width:var(--sz);height:var(--sz)">
+          </div>
+
+          <!-- Panel: same height as board -->
+          <div class="w-[360px] flex-shrink-0 bg-gray-900 rounded-xl border border-gray-800 flex flex-col overflow-hidden"
+               style="height:var(--sz)">
+
+            <!-- Question text -->
+            <div class="px-4 py-4 border-b border-gray-800 flex-shrink-0">
+              <div class="text-lg font-semibold text-center leading-snug">
+                ${escapeHtml(q.text)}
+              </div>
+            </div>
+
+            <!-- Characters: column -->
+            <div class="flex-1 min-h-0 flex flex-col items-center justify-evenly px-6 py-2 overflow-hidden">
+              <div class="flex flex-col items-center gap-1 w-full">
+                <div class="${charBoxCls(cur)}">
+                  ${renderCharImg(cur)}
+                </div>
+                ${renderCharMeta(cur)}
+              </div>
+              <div class="text-gray-600 text-base">↓</div>
+              <div class="flex flex-col items-center gap-1 w-full">
+                <div class="${charBoxCls(next)}">
+                  ${next ? renderCharImg(next, true) : `<span class="text-3xl">🏆</span>`}
+                </div>
+                ${next ? renderCharMeta(next, true) : `<div class="text-xs text-gray-500 text-center">Финал!</div>`}
+              </div>
+            </div>
+
+            <!-- Bottom: controls + nav -->
+            <div class="px-4 py-3 border-t border-gray-800 flex-shrink-0 space-y-2 relative">
+              <div id="nav-lock-indicator" class="hidden absolute -top-5 left-0 right-0 text-xs text-yellow-500 text-center">🔒 Заблокировано</div>
+              <div class="flex items-center gap-1.5">
+                ${q.solutionMovesUci && q.solutionMovesUci.length > 0 ? `
+                <button id="btn-nav-prev" class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">‹</button>
+                <button id="btn-nav-next" class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">›</button>
+                ` : ''}
+                <button id="btn-correct" class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-green-400 rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✔</button>
+                <button id="btn-wrong"   class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-red-400   rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✕</button>
+                ${game.timerSeconds > 0 ? `
+                <div id="timer-display" class="flex-[1.5] h-12 flex items-center justify-center text-2xl font-black text-white bg-gray-800 rounded-xl">${game.timerSeconds}</div>
+                ` : ''}
+              </div>
+              ${bottomControls('h-10')}
+            </div>
+
+          </div>
+        </div>
+      </div>`;
+
+  } else {
+    // ── NON-CHESS LAYOUT: full-screen center + right panel ────────────────
+    el.innerHTML = `
+      <div class="h-screen flex flex-col bg-gray-950">
+        <div class="flex flex-1 min-h-0">
+
+          <!-- Center: question -->
+          <div class="flex-1 flex flex-col items-center justify-center gap-5 p-8 overflow-y-auto">
+            ${game.timerSeconds > 0
+              ? `<div id="timer-display" class="text-6xl font-black text-white leading-none">${game.timerSeconds}</div>`
+              : ''}
+            ${img(q.imageUrl, 'max-h-[65vh] max-w-full w-full object-contain rounded-2xl') ?? ''}
+            <div class="text-2xl font-semibold text-center max-w-2xl leading-relaxed">
+              ${escapeHtml(q.text)}
+            </div>
+            <button id="btn-show-answer"
+              class="py-3 px-10 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-lg transition">
+              Показать ответ
+            </button>
+            <div id="answer-block" class="hidden w-full max-w-xl flex flex-col gap-4">
+              <div class="bg-gray-800 border border-gray-700 rounded-xl p-4 text-center">
+                <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Ответ</div>
+                <div class="text-xl font-bold text-green-400">${escapeHtml(q.answer ?? '')}</div>
+              </div>
+              <div class="flex gap-3">
+                <button id="btn-wrong"
+                  class="flex-1 py-4 bg-red-700 hover:bg-red-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-red-950/50 flex flex-col items-center gap-0.5">
+                  <span class="text-2xl">✕</span><span>Неверно</span>
+                </button>
+                <button id="btn-correct"
+                  class="flex-1 py-4 bg-green-700 hover:bg-green-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-green-950/50 flex flex-col items-center gap-0.5">
+                  <span class="text-2xl">✓</span><span>Правильно +${game.pack.starsPerCorrect}★</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div class="w-[300px] flex-shrink-0 bg-gray-900 border-l border-gray-800 flex flex-col">
+            <div class="flex-1 min-h-0 flex flex-col items-center justify-evenly px-6 py-2 overflow-hidden">
+              <div class="flex flex-col items-center gap-1 w-full">
+                <div class="${charBoxCls(cur)}">
+                  ${renderCharImg(cur)}
+                </div>
+                ${renderCharMeta(cur)}
+              </div>
+              <div class="text-gray-600 text-base">↓</div>
+              <div class="flex flex-col items-center gap-1 w-full">
+                <div class="${charBoxCls(next)}">
+                  ${next ? renderCharImg(next, true) : `<span class="text-3xl">🏆</span>`}
+                </div>
+                ${next ? renderCharMeta(next, true) : `<div class="text-xs text-gray-500 text-center">Финал!</div>`}
+              </div>
+            </div>
+            <div class="px-4 pb-4 pt-3 border-t border-gray-800 flex-shrink-0 space-y-2">
+              ${bottomControls('h-11')}
+            </div>
+          </div>
+
+        </div>
+      </div>`;
+  }
+
+  // Mount chess board if question has FEN
+  if (q.fen) {
+    const container = el.querySelector('#board-container') as HTMLElement;
+    boardApi = mountBoard(container, q.fen, q.boardOrientation ?? 'white');
+    navChess = new Chess(q.fen);
+    if (navChess.inCheck()) {
+      boardApi.set({ check: navChess.turn() === 'w' ? 'white' : 'black' });
+    }
+  }
+
+  // Navigation helpers (solution replay via chess.js)
+  const totalPositions = (q.solutionMovesUci?.length ?? 0) + 1; // start + one per move
+
+  let navLocked = false;
+
+  const updateNavDisplay = () => {
+    const pos = el.querySelector('#nav-pos');
+    if (pos) pos.textContent = `${boardMoveIdx + 1} / ${totalPositions}`;
+    (el.querySelector('#btn-nav-prev') as HTMLButtonElement | null)?.toggleAttribute('disabled', navLocked || boardMoveIdx <= 0);
+    (el.querySelector('#btn-nav-next') as HTMLButtonElement | null)?.toggleAttribute('disabled', navLocked || boardMoveIdx >= totalPositions - 1);
+  };
+
+  const setNavLock = (locked: boolean) => {
+    navLocked = locked;
+    updateNavDisplay();
+    (el.querySelector('#btn-correct') as HTMLButtonElement | null)?.toggleAttribute('disabled', locked);
+    (el.querySelector('#btn-wrong')   as HTMLButtonElement | null)?.toggleAttribute('disabled', locked);
+    el.querySelector('#nav-lock-indicator')?.classList.toggle('hidden', !locked);
+  };
+
+  const applyBoardMove = (targetIdx: number) => {
+    if (!boardApi || !navChess || !q.solutionMovesUci) return;
+    targetIdx = Math.max(0, Math.min(targetIdx, q.solutionMovesUci.length));
+    if (targetIdx < boardMoveIdx) {
+      for (let i = boardMoveIdx; i > targetIdx; i--) navChess.undo();
+    } else {
+      for (let i = boardMoveIdx; i < targetIdx; i++) {
+        const uci = q.solutionMovesUci[i]!;
+        navChess.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] });
+      }
+    }
+    boardMoveIdx = targetIdx;
+    const lastUci = boardMoveIdx > 0 ? q.solutionMovesUci[boardMoveIdx - 1]! : null;
+    const lm: Key[] | undefined = lastUci
+      ? [lastUci.slice(0, 2) as Key, lastUci.slice(2, 4) as Key]
+      : undefined;
+    const inCheck = navChess.inCheck() ? (navChess.turn() === 'w' ? 'white' : 'black') : false;
+    boardApi.set({ fen: navChess.fen(), lastMove: lm, check: inCheck });
+    updateNavDisplay();
+  };
+
+  if (q.solutionMovesUci && q.solutionMovesUci.length > 0) {
+    el.querySelector('#btn-nav-prev')?.addEventListener('click', () => applyBoardMove(boardMoveIdx - 1));
+    el.querySelector('#btn-nav-next')?.addEventListener('click', () => applyBoardMove(boardMoveIdx + 1));
+
+    navKeyHandler = (e: KeyboardEvent) => {
+      if ((e.key === 'l' || e.key === 'L' || e.key === 'д' || e.key === 'Д') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        setNavLock(!navLocked);
+      }
+    };
+    document.addEventListener('keydown', navKeyHandler);
+  }
 
   // Events
   el.querySelector('#btn-show-answer')?.addEventListener('click', () => {
@@ -371,6 +487,7 @@ function renderGameScreen(): void {
   el.querySelector('#btn-exit')?.addEventListener('click', () => {
     showModal('Выйти из игры? Прогресс сохранён.', () => {
       stopTimer();
+      if (navKeyHandler) { document.removeEventListener('keydown', navKeyHandler); navKeyHandler = null; }
       _nav('home');
     });
   });
@@ -577,10 +694,17 @@ function advanceQuestion(): void {
   game.currentIndex++;
 
   if (game.currentIndex >= game.shuffledQuestions.length) {
-    deleteSave(game.id);
-    renderResults();
-    _nav('results');
-    return;
+    const allUnlocked = game.unlockedUpTo >= game.characterSet.characters.length - 1;
+    if (!allUnlocked && game.spareQuestions.length > 0) {
+      // Добираем одну случайную задачу из запасного пула
+      const spare = game.spareQuestions.shift();
+      if (spare) game.shuffledQuestions.push(spare);
+    } else {
+      deleteSave(game.id);
+      renderResults();
+      _nav('results');
+      return;
+    }
   }
 
   upsertSave(game);
@@ -591,6 +715,7 @@ function advanceQuestion(): void {
 
 function renderResults(): void {
   if (!game) return;
+  if (navKeyHandler) { document.removeEventListener('keydown', navKeyHandler); navKeyHandler = null; }
 
   const el        = document.getElementById('screen-results')!;
   const chars     = game.characterSet.characters;

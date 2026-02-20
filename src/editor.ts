@@ -98,7 +98,16 @@ function drawPackList(el: HTMLElement): void {
     reader.onload = ev => {
       try {
         const data = JSON.parse(ev.target?.result as string);
-        if (!data.title || !Array.isArray(data.questions)) throw new Error();
+        if (
+          !data.title ||
+          !Array.isArray(data.questions) ||
+          typeof data.starsPerCorrect !== 'number' ||
+          !data.questions.every((q: unknown) => {
+            const qq = q as Record<string, unknown>;
+            return qq && typeof qq['text'] === 'string' &&
+              (qq['answer'] === undefined || typeof qq['answer'] === 'string');
+          })
+        ) throw new Error();
         ps.packs.push(data as QuestionPack);
         savePacks(ps.packs);
         drawPackList(el);
@@ -113,7 +122,7 @@ function drawPackList(el: HTMLElement): void {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['edit']!);
       ps.editIdx = i;
-      ps.pack = JSON.parse(JSON.stringify(ps.packs[i]));
+      ps.pack = structuredClone(ps.packs[i]);
       ps.view = 'edit';
       ps.expandedQ = -1;
       drawPack(el);
@@ -141,7 +150,7 @@ function drawPackList(el: HTMLElement): void {
   el.querySelectorAll<HTMLElement>('[data-copy]').forEach(btn => {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['copy']!);
-      const copy: QuestionPack = JSON.parse(JSON.stringify(ps.packs[i]));
+      const copy: QuestionPack = structuredClone(ps.packs[i]);
       copy.title += ' (копия)';
       ps.packs.push(copy);
       savePacks(ps.packs);
@@ -230,7 +239,7 @@ function drawPackEdit(el: HTMLElement): void {
   });
 
   el.querySelector('#pe-add-q')?.addEventListener('click', () => {
-    ps.pack.questions.push({ text: '', answer: '', imageUrl: '' });
+    ps.pack.questions.push({ text: '', answer: '' });
     ps.expandedQ = ps.pack.questions.length - 1;
     refreshQList(el);
     setTimeout(() => {
@@ -272,13 +281,27 @@ function renderQList(questions: Question[]): string {
             </div>
             <div>
               <label class="text-xs text-gray-400">Ответ</label>
-              <input data-qans="${i}" type="text" value="${escapeHtml(q.answer)}" placeholder="Правильный ответ..."
+              <input data-qans="${i}" type="text" value="${escapeHtml(q.answer ?? '')}" placeholder="Правильный ответ..."
                 class="w-full bg-gray-800 text-white rounded-lg px-3 py-2 mt-1 text-sm border border-gray-700 focus:outline-none focus:border-indigo-500" />
             </div>
             <div>
               <label class="text-xs text-gray-400">Изображение (URL, необязательно)</label>
               <input data-qimg="${i}" type="text" value="${escapeHtml(q.imageUrl ?? '')}" placeholder="https://..."
                 class="w-full bg-gray-800 text-white rounded-lg px-3 py-2 mt-1 text-sm border border-gray-700 focus:outline-none focus:border-indigo-500" />
+            </div>
+            <div>
+              <label class="text-xs text-gray-400">FEN позиция (необязательно, для шахмат)</label>
+              <input data-qfen="${i}" type="text" value="${escapeHtml(q.fen ?? '')}" placeholder="rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1"
+                class="w-full bg-gray-800 text-white rounded-lg px-3 py-2 mt-1 text-sm border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono text-xs" />
+            </div>
+            <div>
+              <label class="text-xs text-gray-400">Ориентация доски</label>
+              <select data-qorient="${i}"
+                class="w-full bg-gray-800 text-white rounded-lg px-3 py-2 mt-1 text-sm border border-gray-700 focus:outline-none focus:border-indigo-500">
+                <option value="" ${!q.boardOrientation ? 'selected' : ''}>Авто (белые снизу)</option>
+                <option value="white" ${q.boardOrientation === 'white' ? 'selected' : ''}>Белые снизу</option>
+                <option value="black" ${q.boardOrientation === 'black' ? 'selected' : ''}>Чёрные снизу</option>
+              </select>
             </div>
           </div>
         ` : ''}
@@ -347,13 +370,26 @@ function bindQEvents(el: HTMLElement): void {
 
   el.querySelectorAll<HTMLInputElement>('[data-qans]').forEach(inp => {
     inp.addEventListener('input', () => {
-      ps.pack.questions[parseInt(inp.dataset['qans']!)]!.answer = inp.value;
+      ps.pack.questions[parseInt(inp.dataset['qans']!)]!.answer = inp.value || undefined;
     });
   });
 
   el.querySelectorAll<HTMLInputElement>('[data-qimg]').forEach(inp => {
     inp.addEventListener('input', () => {
-      ps.pack.questions[parseInt(inp.dataset['qimg']!)]!.imageUrl = inp.value;
+      ps.pack.questions[parseInt(inp.dataset['qimg']!)]!.imageUrl = inp.value || undefined;
+    });
+  });
+
+  el.querySelectorAll<HTMLInputElement>('[data-qfen]').forEach(inp => {
+    inp.addEventListener('input', () => {
+      ps.pack.questions[parseInt(inp.dataset['qfen']!)]!.fen = inp.value || undefined;
+    });
+  });
+
+  el.querySelectorAll<HTMLSelectElement>('[data-qorient]').forEach(sel => {
+    sel.addEventListener('change', () => {
+      const v = sel.value as 'white' | 'black' | '';
+      ps.pack.questions[parseInt(sel.dataset['qorient']!)]!.boardOrientation = v || undefined;
     });
   });
 }
@@ -448,7 +484,14 @@ function drawCharList(el: HTMLElement): void {
     reader.onload = ev => {
       try {
         const data = JSON.parse(ev.target?.result as string);
-        if (!data.title || !Array.isArray(data.characters)) throw new Error();
+        if (
+          !data.title ||
+          !Array.isArray(data.characters) ||
+          !data.characters.every((c: unknown) => {
+            const cc = c as Record<string, unknown>;
+            return cc && typeof cc['name'] === 'string' && typeof cc['cost'] === 'number';
+          })
+        ) throw new Error();
         cs.sets.push(data as CharacterSet);
         saveCharacterSets(cs.sets);
         drawCharList(el);
@@ -463,7 +506,7 @@ function drawCharList(el: HTMLElement): void {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['edit']!);
       cs.editIdx = i;
-      cs.set = JSON.parse(JSON.stringify(cs.sets[i]));
+      cs.set = structuredClone(cs.sets[i]);
       cs.view = 'edit';
       cs.expandedC = -1;
       drawChar(el);
@@ -491,7 +534,7 @@ function drawCharList(el: HTMLElement): void {
   el.querySelectorAll<HTMLElement>('[data-copy]').forEach(btn => {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset['copy']!);
-      const copy: CharacterSet = JSON.parse(JSON.stringify(cs.sets[i]));
+      const copy: CharacterSet = structuredClone(cs.sets[i]);
       copy.title += ' (копия)';
       cs.sets.push(copy);
       saveCharacterSets(cs.sets);
@@ -575,7 +618,7 @@ function drawCharEdit(el: HTMLElement): void {
   });
 
   el.querySelector('#ce-add-c')?.addEventListener('click', () => {
-    cs.set.characters.push({ name: '', cost: 0, imageUrl: '' });
+    cs.set.characters.push({ name: '', cost: 3 });
     cs.expandedC = cs.set.characters.length - 1;
     refreshCList(el);
     setTimeout(() => {
@@ -621,7 +664,7 @@ function renderCList(chars: Character[]): string {
             </div>
             <div>
               <label class="text-xs text-gray-400">Стоимость (★ для открытия)</label>
-              <input data-ccost="${i}" type="number" min="0" value="${c.cost}"
+              <input data-ccost="${i}" type="number" min="1" value="${c.cost}"
                 class="w-full bg-gray-800 text-white rounded-lg px-3 py-2 mt-1 text-sm border border-gray-700 focus:outline-none focus:border-indigo-500" />
             </div>
             <div>
@@ -702,13 +745,13 @@ function bindCEvents(el: HTMLElement): void {
 
   el.querySelectorAll<HTMLInputElement>('[data-ccost]').forEach(inp => {
     inp.addEventListener('input', () => {
-      cs.set.characters[parseInt(inp.dataset['ccost']!)]!.cost = Math.max(0, parseInt(inp.value) || 0);
+      cs.set.characters[parseInt(inp.dataset['ccost']!)]!.cost = Math.max(1, parseInt(inp.value) || 1);
     });
   });
 
   el.querySelectorAll<HTMLInputElement>('[data-cimg]').forEach(inp => {
     inp.addEventListener('input', () => {
-      cs.set.characters[parseInt(inp.dataset['cimg']!)]!.imageUrl = inp.value;
+      cs.set.characters[parseInt(inp.dataset['cimg']!)]!.imageUrl = inp.value || undefined;
       // Refresh to show/hide preview
       refreshCList(el);
     });

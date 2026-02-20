@@ -1,0 +1,1494 @@
+{
+  "title": "Мат в 1 ход (5 уровень)",
+  "starsPerCorrect": 3,
+  "questions": [
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2R5/1p1r1pk1/1p1p1Npb/1q1P4/7Q/1P1n1P2/6PP/1R5K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c8g8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6rk/1R3R1p/8/2p5/8/1Pbp4/Pr6/K7 b - - 0 51",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "b2b3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1bk2r1/ppq2Qpp/3Np3/n2R4/2p5/8/PP3P1P/2K2B1R w - - 0 24",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d6b7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3r4/3qb1p1/4k2p/3RB1p1/3P4/1Q2N2P/3n1PP1/6K1 w - - 0 37",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5d6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r1bqk1nr/ppp2pbp/3p2p1/3Pp3/2PnP3/4B1P1/PP2NP1P/RN1QKB1R b KQkq - 0 7",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d4f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "8/p1p5/5P1k/2p3R1/7K/1P6/P1P5/2B5 w - - 0 38",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g5g7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/pp4p1/2p5/2bp4/8/P5Pb/1P3r1P/2BRRNK1 b - - 0 45",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f2f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/1p2bpp1/p3p2p/3P4/8/P1Bnn3/1P4rP/R6K b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d3f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "b4rR1/3r1P1k/3q4/p1n1p2B/1p6/7R/PPP5/1K1N1Q2 w - - 0 37",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h5g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3bk2/p1p4R/1p1p1N2/3Pp1N1/7p/P3nP2/1PP4P/7K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g5e6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1r4k1/p2b1p1p/r5p1/3p4/8/1nN2P2/2Q3PP/BKN4R b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "b3d2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4RBk1/pq3p1p/5bp1/8/3p3n/1BrQ1P1P/P1P2P2/5K2 w - - 0 30",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3r3r/5p1p/n2ppQpk/1p5P/p3N3/P1P5/BP3PP1/1K5R w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h5g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/p4ppp/4p3/r2p4/qpR5/2p1PP2/1PP1R1PP/2K1Q3 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "a4a1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3k2N/pp2B1p1/7p/2p5/8/2N5/PPP2PPP/2KRR3 w - - 0 19",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e7c5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r4k1/1p2qb2/p4pPQ/3B4/3p3p/3P4/2p5/6RK w - - 0 41",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g6f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "Q7/6pk/2b4p/8/8/4b3/1R4rP/5R1K b - - 0 36",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g2g1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "4br1k/8/ppp4p/3pN1q1/PP1PprB1/4K3/7P/1R1Q2R1 b - - 0 33",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f4f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2r2rk1/5p2/p2qNKpp/1p1p1b2/5P2/1P5P/PN1Q2P1/4R2R b - - 0 26",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f7e6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1bq1knr/pp1n2pp/2pbp3/3pNp1Q/2PP4/2N1P3/PP3PPP/R1B1KB1R w KQ - 0 8",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h5f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1r2nbrk/p1p4p/1pBp4/1NPPp3/NP2Pp2/B3nRPq/P7/2R3K1 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3g2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2qr3/pp4p1/2pP4/2P1pBb1/8/1P4k1/PB5R/5RK1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h2h3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r4rk1/1p2q2p/p2p4/2pPn3/P4b2/2Nb3P/1P3B2/R2QKB1R b KQ - 0 26",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e5f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r4qr1/p3RB1k/2p2Q2/1p1p2Pp/3P3P/2P5/P1PK1P2/8 w - - 0 31",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2QN1k1/1pQ5/p1p3qp/8/2P5/1P4Pn/P6P/5R1K w - - 0 39",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e8f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/7k/5B1p/2p1PK2/2n1P1r1/1R3N1b/7P/8 b - - 0 49",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g4h4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2r4/p3Q1p1/kp5p/1q3p1B/P1P2P2/8/5PPP/R4RK1 w - - 0 31",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "a4b5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2qkbnr/pp3ppp/n7/3p4/4N3/P7/1PP1QPPP/R1B1K2R w KQkq - 0 12",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1bqkr2/pp1p1pQp/3pB1nB/8/8/5N2/P4PPP/R3R1K1 w q - 0 17",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2b3r1/ppr4k/1qn1pQN1/8/3P4/6P1/PP3P1P/1B1R2K1 w - - 0 30",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g6f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "Q5k1/p4ppp/4p3/1b2P3/1P6/2q1N3/3r1PPP/3BK2R b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d2d8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/8/8/8/8/3n1kp1/7p/7K b - - 0 72",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d3f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3k2r/ppp2pp1/3p1n1p/4p3/2B1P2q/2NPPP1b/PPP4K/R2Q2R1 b kq - 0 15",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3r2k1/p4rP1/1b1q1P2/n1p1p3/1p6/5N1R/P4P1P/6RK w - - 0 33",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h3h8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/1bb5/8/6k1/8/4pp2/8/7K b - - 0 60",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f3f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "K7/6kp/1q2b1p1/8/7P/8/8/8 b - - 0 59",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e6d5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2r3k1/5pbp/NR4p1/1p6/8/1BP2bP1/PP4rP/R6K b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g2g3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5r1k/1b1p2pp/p3r3/1p4qn/3B4/P2B4/1PP1N1PP/4RR1K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f1f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r4q1r/pp1k1p2/2p4p/3NQ3/2B5/6P1/PPP4P/3R2K1 w - - 0 23",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5b6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r6k/1R6/4PNrb/8/p3P1p1/8/2P2P1P/6K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "b7h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r5kr/ppp2Rpp/1b6/n2Q4/2q5/B4N2/P4PPP/1R4K1 w - - 0 21",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2q1b1r/ppNb1ppp/2n1pkn1/3p4/4PB2/Q4N2/PPP2PPP/R3KB1R w KQ - 0 11",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f4g5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/pp6/3p2p1/8/2P5/1N3npP/PP5r/R4K2 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h2f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3k2r/2p2p2/p2p3p/1p2p2n/1b2P2q/1BNPQP1b/PPPB1P2/R5RK b kq - 0 17",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3k2r/p1p1bp1p/2p3pQ/1b2p3/1nq5/K3P1PN/PP1P1P1P/RNB4R b kq - 0 19",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "b4c2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/pp5p/2n4p/3R4/4p3/1BP1b3/PP1N2PP/1K1br3 b - - 0 27",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d1b3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3R1B1k/p4p2/np3Np1/8/4P2P/5P2/PP2b3/1K6 w - - 0 35",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b2Q2/npq2pN1/1bp5/pP1pP3/P2P1P1k/2PB1R1P/6P1/RN4K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3R4/kN2R3/1p3pp1/p4p1p/2P4P/5PPK/q7/8 w - - 0 39",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "b7c5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r4r1k/pp1n4/2q3QB/2p4R/3bp3/3P2P1/P1P4P/6K1 w - - 0 27",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h6e3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r1b3k1/p4p1p/1p4p1/1Bp5/3q4/P2Pr3/Q1PN2PP/3R2K1 b - - 0 24",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e3e1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2R2Bk1/5p1p/1p2p1p1/4P3/2P5/1n5P/r4PP1/4qBK1 w - - 0 45",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "7R/4kpp1/1N2p2p/4P3/8/1P3n2/P4r1P/2R4K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c1c7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/5p1p/1R1p2p1/3P4/8/1P4P1/1P3P1P/2r2bK1 b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f1h3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3rn1k/6R1/pp1p1B2/3Pp3/2P2p1q/8/PP5P/1BR3K1 w - - 0 34",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g7g5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "3r2k1/pp3p1p/8/6p1/P7/2Nbb3/Br4PP/R2KB2R b - - 0 26",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d3e2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/2pk1p2/pp1p4/3P4/PPP1P3/2N3np/5r2/2R3K1 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f2g2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3rk2/pb1q4/1p1p1BQ1/2pPpP2/2P1P3/P1PB4/6R1/4R1K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g6g8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2k3r1/1pp2p1p/1p1p1p2/4p3/P3P2q/3P4/1PP2Pn1/R3R1K1 b - - 0 27",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g2e3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r5k/7n/3q4/2pBRb2/5p1p/2Q2P2/6PP/5NK1 w - - 0 35",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5e8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "4r3/pp4k1/5np1/2r4p/n1BppQ1P/qP4N1/2PR2P1/3KR3 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "a4c3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r5R/1q3rk1/pB1pQ3/1p1Np1p1/1n2P1P1/3P4/P1P2PP1/R3K3 w Q - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "K1n5/2k5/8/1b6/8/8/8/8 b - - 0 136",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "b5c6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2kr3r/ppB2ppp/5bn1/PB5q/N7/8/1P3PPP/R1R3K1 w - - 0 25",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c7e5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/5pp1/p6p/K3p2P/P2n1p2/2r5/3bb1P1/1R6 b - - 0 47",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c3b3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3nr1k/N1p3b1/P2p3n/1B2p3/1P2P1b1/2N1BPp1/7q/R2QRK2 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g4h3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3r3k/1pp1Q3/1p3Np1/7p/8/2Pq4/PP3PP1/4R1K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e7h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5b2/2R2p2/4p2p/p2kP2p/P1p1NP1P/2Pr2P1/4K3/8 w - - 0 39",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "7k/2p1N1p1/P3p3/4P2q/3p2n1/P4RP1/2Q2PK1/8 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f3f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3R4/4kppp/4p3/1r2P3/pN3P2/4p3/1p4PP/5K2 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "b4c6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "8/3r4/8/7R/R2Pk1p1/4p3/4K2P/8 w - - 0 51",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d4d5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2r3k1/4pp2/p2p2p1/6B1/1p1Qq1n1/1B5P/PPr3P1/1K1R4 b - - 0 31",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c2c1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4r1rk/2q3n1/p2p1Bp1/1p1Pp2p/7P/5P2/PPPQ4/2K3R1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d2h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/7p/5p2/3p1P2/b1pP1bPN/n1P1r3/8/2K4R b - - 0 37",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e3e2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/pp3ppp/Q7/K1P5/1P1n3P/P1n5/R3P1P1/5B1R b - - 0 27",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d4b3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "3r4/pp4k1/2p1bbp1/2P1p3/1P2PpP1/P4P1B/1B2QK2/1NR4q b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f6h4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "rnb5/ppk2p2/2p1p3/6B1/8/8/P1P1q1PP/K2R3n w - - 0 21",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g5d8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5k1r/6pp/4Qnq1/2P5/8/B6P/3N2P1/4R1K1 w - - 0 42",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c5c6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r1q1rk1/7n/6pp/pPpR2bP/P1B5/1PB2pP1/5N2/1K4N1 w - - 0 27",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5d8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "4k3/5q1Q/pp1P4/5Pp1/PBpb2P1/5r2/1P3r2/4R1KR b - - 0 35",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f2e2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r6r/1bq2pQ1/p2p1p2/1p3B1k/4PP1b/2N5/PPP4P/1K1R2R1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f5g4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3k3/3ppp2/p7/1p1R1p1p/2pP1n2/2P1KP2/PPB3q1/4QR2 b q - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f4d5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2k1r3/p1p2Q1p/N4n2/8/2Pb4/5B2/P1q2PPP/5RK1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7c7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1b1q1R2/rB3R2/p2Pp1k1/Pp2p1Pp/7P/6P1/7K/8 w - - 0 55",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "b7e4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/1p4pp/p2p3r/2pPp3/2PP1b2/1P3r1b/PB6/4R1RK b - - 0 29",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r6k/pp2b1p1/2b1B2p/6N1/2P2P1P/n1B5/PP1r2P1/KR5R b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "a3c2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3n2kr/p1b2R2/1p4B1/4P1Qp/7P/2q3B1/6PN/7K w - - 0 45",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g6h5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r5k/p3P1Rp/bp1p1Bp1/3p4/2P3P1/7P/P7/7K w - - 0 35",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g7g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/8/8/8/3b4/5k1p/5np1/6K1 b - - 0 68",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f2g4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5q2/4Npkp/5Rp1/1p2Q3/p3P3/P4P1P/1r4PK/8 w - - 0 42",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f6g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "5k2/pb3pp1/1p2p3/6B1/3b4/P2B4/1P4rP/2R4K b - - 0 31",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g2g1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "8/3Q3p/1p3pp1/5R2/Pq2r3/5P1k/7P/6K1 w - - 0 48",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f5h5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2rq1rk1/pp2bp2/2p3B1/nP2B3/P1P3R1/4PP2/2QPKP2/8 w - - 0 23",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g6h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/6pp/p7/1pB1Np2/4bP2/2P3nP/6r1/3RK3 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g2e2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1R1bk3/5pp1/3B4/p6p/P2PB1b1/2q5/5P2/4R1K1 w - - 0 38",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4c6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/4kppp/4b3/4p3/3bP1PP/1pp2P2/4R3/K3R3 b - - 0 48",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c3c2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "6nk/6R1/pp2P2p/6p1/npPBB3/2r4P/6P1/5K2 w - - 0 54",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g7h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1kr5/2R2p2/pNP1r2p/8/1P3Q2/1P2P1P1/7P/6K1 w - - 0 42",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c7b7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r2r1k/3bNpp1/p1n4p/1p1pP1qP/3P4/1P1Q4/P4PP1/1BRR2K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d3h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "6k1/1ppq1p2/p1np2nQ/4pp1p/PPB1P3/2PP3P/5P1K/6R1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g1g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3r1k1/pp3pBb/q6p/3p3P/5QP1/bPP2P2/1P6/K2R2NR b - - 0 25",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "a3b4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3k2r/1q2bppp/p1R5/3RB3/Q3p3/6P1/PP3P1P/6K1 w - - 0 22",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "c6c8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r5k1/2B2ppp/p7/4N3/P1bP4/8/2n1rPPP/2R2K2 b - - 0 32",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e2e1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b1RBk1/pp1p1p2/5b1p/2p5/8/2PB1P2/PP5P/2K5 w - - 0 26",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "5r1k/ppp1b2p/8/2P5/2Q1P1n1/6PP/P2q4/1R3RK1 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d2h2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3n2kr/ppp3r1/4pRQp/3p4/qB1P4/2P5/P2N2PP/5RK1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f6f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1k1r4/p3np2/1p2p1p1/5qPp/5P2/2Pr1R1Q/PP4B1/1K2R3 b - - 0 37",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d3d1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2br4/r5Q1/pq1kp1p1/1p2p1N1/1n1P4/6B1/PP3PPP/2RR2K1 w - - 0 30",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d4e5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1rb1nb1r/1p2npp1/pB2k2p/3Np3/2B1P3/P6N/1PP3PP/3R1RK1 w - - 0 23",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5c7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6rk/ppp3rp/3pb2q/1P1Np3/P1P4n/3PQPN1/6BK/2R3R1 b - - 0 28",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h4f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/7p/5Rp1/4p3/4Pp2/5P2/6PP/r3n1K1 b - - 0 39",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e1d3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/8/8/8/8/1kr3p1/8/K7 b - - 0 81",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c3c1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "rnb2bk1/1p1q1N1p/3p3r/3Q4/1p6/PN2P3/1B2BPPP/R4RK1 w - - 0 22",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b1Q3/1pb2Bpk/3p1r1p/p1p5/2P2P1q/P1B4P/1P4PK/R4R2 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e8g8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "6k1/1pbq2pn/2p1R2p/8/Pp1P4/1Q3rP1/1P3P1P/5RK1 w - - 0 24",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6e8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2b3k1/6pp/5p2/p1p5/1p1Bnp2/1P3N1P/P1N1K1B1/1r6 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c8a6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/Qp4pk/2p3b1/5p1p/3B2nP/1P4PK/P1P1r3/7B b - - 0 40",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e2h2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3rnQ2/p1q1N1pk/1pb4p/2p1P3/2P5/PP4P1/1B5P/4R1K1 w - - 0 28",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8g8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3rkbQ1/p1qbr2N/2p3p1/1pP1pp1n/1P2P3/4B2P/P2RNPP1/3R2K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g8f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "8/8/2K5/2B4p/4Bp2/5P1k/5Q2/8 w - - 0 69",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4f5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r1r2R/5k2/1q1pN1p1/p2P1p2/2nQ4/P4P2/4RKP1/8 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6g5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r3r1/1pk5/p5b1/4R3/4pB2/8/PP1R2P1/5K2 w - - 0 37",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5e6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r5r1/1p6/1p1Np1n1/1P1pP1k1/4P3/2P2PP1/6K1/2R4R w - - 0 33",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d6f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3r3/pppqB2p/1b4p1/n5Pk/3P2b1/2P2BQ1/P4P1P/RN4K1 w - - 0 23",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g3h3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5rk1/p1q2p2/2n2bpQ/1pprp3/3pN3/3P4/PPP3PP/R4R1K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4Rrkq/p1p4p/2p1N1p1/6P1/5P2/2pB4/PP5P/6K1 w - - 0 28",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e8f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r6k/p1B2Qpp/1pb5/2q2R2/2Pr2n1/7P/PPP3P1/3R2K1 b - - 0 23",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d4d1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "7r/pp1b2k1/2pq2p1/1P1p4/6Pn/P2PN1b1/1P2B1P1/2Q1BR1K b - - 0 37",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h4f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4RBk1/5p1p/5bp1/8/8/8/5PPP/6K1 w - - 0 47",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f8h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r2rk3/1pp3Q1/1pn1Npn1/3q1P2/8/2P2R2/PP4PP/R5K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6c7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r6k/1ppb3p/3P2pb/2PQN3/1K2p3/1BB3nP/P5P1/5q2 w - - 0 39",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "8/5QBk/1p4nP/p1p4R/4bq2/P7/KP4P1/8 w - - 0 35",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g7f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/3b2p1/p3P2p/n4B2/2p4q/6b1/PPPB2Pn/R5RK b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h2g4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "3r1q1k/p7/2P4n/2P4p/1P1bN2r/P4Ppb/2Q1B3/2RNR2K b - - 0 34",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/qr4p1/5p1p/3b4/1P6/2PBr1P1/p1NN3P/Q5K1 b - - 0 41",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e3e1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b3k1/pp4P1/2p1p1B1/2PpB1q1/8/4P3/PP3r2/2R1K2R w K - 0 26",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h1h8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r3r1/pb2q2k/1pp1pppB/7R/2PPB1P1/8/PP1Q1P2/3R2K1 w - - 0 25",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h6f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r4k/pb3Qpn/1p2p2p/4N2P/2p2PP1/4P3/PP2Bq2/1K4R1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3Rb1k1/3Nnppp/p3p3/8/1r2Nn2/5B1P/PP3PP1/6K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d8e8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "5rk1/5p2/q2p2pQ/p2P4/1pr3N1/4P3/PP3PPP/2R2RK1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "7k/pp2P1p1/3p1rqp/8/2B1p2r/2P1RP1n/P6K/R3Q3 b - - 0 33",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1q5k/p2rB1R1/2p4N/5Npp/3P1p2/7P/Pr2QPP1/6K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h6f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r4r2/pp2p1kp/8/4Nb2/3b3p/1P5P/P1P3P1/4RK1R b - - 0 25",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f5d3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1r1qknR/p4p2/1p2pBp1/4P1N1/8/8/PP3PPP/4R1K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "g5h7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "q3r1nr/1p1k1p1p/1Bn1R1p1/5B2/8/Q4P2/PP3P1P/2R3K1 w - - 0 24",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e6e7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1rr3k1/3n1qBp/3p1n2/1p1P1NQ1/1P2P1p1/2p4N/6P1/5R1K w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f5h6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1k1r4/pP5p/4b3/3N2p1/4Pp2/3r3n/P5PP/R1Q3RK b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r3k1/pp4pp/5pr1/2PRb3/2Q3P1/B1q4P/P4P2/4R2K w - - 0 33",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5d8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "5k1r/4pp1p/r2p2pP/2qB2P1/b3PQ2/5P2/KP6/3R3R b - - 0 31",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "a4c2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3qkb1r/3Rnpp1/b1B1p2p/p3P1B1/p7/N7/PP3PPP/2R3K1 w k - 0 23",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d7e7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r3r1k1/2b4p/6pQ/p2pn3/P4P2/3q2B1/1P4PP/2R1K3 b - - 0 30",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e5g4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1r4k1/p4ppp/5n2/3p4/1Q6/q1P2N2/P3bPPP/RK5R b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e2d3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6rk/pp1b4/2p5/3p1p2/3P1P1q/P1PB1Rpr/1P5P/5RKQ b - - 0 38",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "g3h2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "3r2k1/5ppp/p6r/1p1p1K2/1PpN1P2/P1P1P2n/2B3q1/2Q1RR2 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h6h5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2k4r/1pq2p2/p7/3p2r1/4pN2/3P3b/PPPQ4/R4RBK b - - 0 27",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3g2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r5kr/ppN2Rpp/2n1Bp2/2b5/8/5N2/PP3PPP/5RK1 w - - 0 21",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "5rk1/p4ppp/1p6/2n5/4pN2/P5P1/1Q3P1P/3r1bK1 b - - 0 25",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f1h3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "1r2r1k1/5pbp/pp4p1/2pN4/2P1p2q/PP2Pn1b/1BQ1BP2/1R1R3K b - - 0 27",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3N3k/7P/6K1/2p5/8/8/8/8 w - - 0 77",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d8f7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r6k/ppp3p1/2np1n1p/4p2q/4P3/PBP1BrPb/2PQ1P2/R5RK b - - 0 21",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "h3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b2knr/ppp2ppp/3p4/bB3q2/3p4/B1P5/P4PPP/RN1KR3 w - - 0 17",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e1e8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/8/8/8/8/2k5/Kp6/3r4 b - - 0 70",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "d1a1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "4rrk1/4n2p/p5p1/1p6/1qppP3/3n1P1P/PPK1N3/R2B1Q1R b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "b4b2"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "3rkbr1/p1p2p1p/1pq2p2/2p5/4N1b1/3P1N2/PPP1QPPP/R1B2RK1 w - - 0 14",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r1b1k2r/ppp1qppp/5B2/3Pn3/8/8/PPP2PPP/RN1QKB1R b KQkq - 0 9",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e5f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "6k1/1br2p2/p2q2p1/4n1r1/2p1p2p/2PnP2P/P1NR1PPK/1R1Q1B1N b - - 0 39",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e5f3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r2b2/2n4p/5kp1/4N3/2BB1PP1/8/P6P/6K1 w - - 0 44",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5c6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1r5r/2p5/pp2kp1p/8/4BP1P/6P1/PPP5/3RR1K1 w - - 0 31",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e4g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1b3r1/pn1N2k1/2p2p1p/8/3Q4/3B2Pq/PPPB3P/R6K w - - 0 27",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d4f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4rk2/5B1p/3q1Qp1/pp6/6P1/P1p4P/4PP2/6K1 w - - 0 37",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f7e6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3Q2b/p2R1p1n/2k1b3/q1P5/1p2PB2/1P3P2/P3N3/4K1N1 w - - 0 29",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d7c7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1bq1n1r/pp3QpB/2p1pb2/5R2/2p5/2Pk4/PP4PP/4R1K1 w - - 0 19",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "f5d5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2krr3/pp4p1/2p3pp/2N1n1P1/7P/5P2/PPPB1nB1/R3KR2 b Q - 0 20",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e5d3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4b2k/2R1Q1n1/5Nr1/p3ppp1/P3p3/6Pq/1P5P/3R2K1 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e7f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2r3k1/6P1/4rP1K/3Q4/8/8/8/8 w - - 0 81",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d5e6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "4Q3/bb4p1/p2k1rB1/8/1Pr5/2P4N/1P1B3q/1K1R4 w - - 0 33",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "d2f4"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "r4rk1/5ppp/p1qN2b1/2n3PP/8/1P6/PP1QB3/2KR2R1 b - - 0 24",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "c5b3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "2rRN1k1/1b3pp1/pp6/6p1/PP2p3/2n3P1/4PPBP/6K1 w - - 0 28",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e8f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "1n1QN2k/5K2/4P3/p3q2p/7P/8/8/8 w - - 0 57",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e8f6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r3rn1k/5p2/p1n2NpB/1pp1P3/3q1P1Q/4R3/PPp3P1/4R1K1 w - - 0 31",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h6f8"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "r1r3k1/2q2p1b/1n1p1B1Q/1p1Pp2p/1pp1P2R/2P4P/P1B2P1K/R7 w - - 0 1",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "h6g7"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "2k1r3/pp4pp/3p4/8/6b1/3P1r2/PPPB4/R2K4 b - - 0 25",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f3f1"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "4r1k1/1pp2r2/p6Q/3P1pp1/3p4/P2P1KbP/1PP3Pq/R4R2 b - - 0 1",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "e8e3"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "7k/5Q2/2PP4/4N3/p3P3/4K3/8/8 w - - 0 59",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "e5g6"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход чёрных",
+      "fen": "8/5bk1/1p6/8/3q4/5K2/2R5/6r1 b - - 0 50",
+      "boardOrientation": "black",
+      "solutionMovesUci": [
+        "f7h5"
+      ]
+    },
+    {
+      "text": "Мат в 1 ход. Ход белых",
+      "fen": "rnbq1r2/p4p2/1np1p3/4p3/3P2PQ/RB3k2/1PP1N3/4K2R w K - 0 25",
+      "boardOrientation": "white",
+      "solutionMovesUci": [
+        "b3d5"
+      ]
+    }
+  ]
+}

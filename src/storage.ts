@@ -9,7 +9,12 @@ const SAVES_KEY     = 'clu_saves';
 export function loadPacks(): QuestionPack[] {
   try {
     const data = JSON.parse(localStorage.getItem(PACKS_KEY) ?? '[]');
-    return Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) return [];
+    return data.filter(p =>
+      p && typeof p.title === 'string' &&
+      Array.isArray(p.questions) &&
+      typeof p.starsPerCorrect === 'number'
+    );
   } catch { return []; }
 }
 
@@ -22,7 +27,11 @@ export function savePacks(packs: QuestionPack[]): void {
 export function loadCharacterSets(): CharacterSet[] {
   try {
     const data = JSON.parse(localStorage.getItem(CHAR_SETS_KEY) ?? '[]');
-    return Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) return [];
+    return data.filter(s =>
+      s && typeof s.title === 'string' &&
+      Array.isArray(s.characters)
+    );
   } catch { return []; }
 }
 
@@ -35,7 +44,12 @@ export function saveCharacterSets(sets: CharacterSet[]): void {
 export function loadSaves(): SaveSlot[] {
   try {
     const data = JSON.parse(localStorage.getItem(SAVES_KEY) ?? '[]');
-    return Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) return [];
+    return data.filter(s =>
+      s && typeof s.id === 'string' &&
+      typeof s.playerName === 'string' &&
+      s.state != null
+    );
   } catch { return []; }
 }
 

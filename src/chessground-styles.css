@@ -1,0 +1,88 @@
+@import '@lichess-org/chessground/assets/chessground.base.css';
+@import '@lichess-org/chessground/assets/chessground.brown.css';
+@import '@lichess-org/chessground/assets/chessground.cburnett.css';
+
+/* ── Coordinate fixes (calibrated for maple board) ── */
+
+.cg-wrap coords {
+  font-weight: bold;
+  font-family: "Noto Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 12px !important;
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: none !important;
+}
+
+/* Ranks (numbers 1-8) — left side */
+.cg-wrap coords.ranks {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 14px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.cg-wrap coords.ranks coord {
+  flex: 0 0 12.5% !important;
+  height: 12.5% !important;
+  display: block !important;
+  text-align: left !important;
+  padding-left: 3px !important;
+  padding-top: 2px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+}
+
+/* Files (letters a-h) — bottom row */
+.cg-wrap coords.files {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  width: 100% !important;
+  height: 14px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-end !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.cg-wrap coords.files coord {
+  flex: 0 0 12.5% !important;
+  width: 12.5% !important;
+  display: block !important;
+  text-align: right !important;
+  padding-right: 3px !important;
+  padding-bottom: 1px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+/* Colors: alternate light/dark per square — white orientation */
+.orientation-white .ranks coord:nth-child(odd)  { color: #f0d9b5 !important; }
+.orientation-white .ranks coord:nth-child(even) { color: #946f51 !important; }
+.orientation-white .files coord:nth-child(odd)  { color: #f0d9b5 !important; }
+.orientation-white .files coord:nth-child(even) { color: #946f51 !important; }
+
+/* Colors: black orientation (reversed) */
+.orientation-black .ranks coord:nth-child(odd)  { color: #946f51 !important; }
+.orientation-black .ranks coord:nth-child(even) { color: #f0d9b5 !important; }
+.orientation-black .files coord:nth-child(odd)  { color: #946f51 !important; }
+.orientation-black .files coord:nth-child(even) { color: #f0d9b5 !important; }
+
+/* Black orientation — reverse direction */
+.cg-wrap.orientation-black coords.ranks { flex-direction: column !important; }
+.cg-wrap.orientation-black coords.files { flex-direction: row-reverse !important; }
