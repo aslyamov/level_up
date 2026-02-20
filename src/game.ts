@@ -13,8 +13,6 @@ import {
 // ── State ──────────────────────────────────────────────────────────────────
 
 let game: GameState | null = null;
-let timerInterval: number | null = null;
-let timerRemaining = 0;
 let _nav: (s: Screen) => void = () => { /* no-op until app sets it */ };
 let boardApi: Api | null = null;
 let boardMoveIdx = 0;
@@ -91,12 +89,6 @@ export function renderSetup(el: HTMLElement): void {
           <div id="compat-warning"></div>
         </div>
 
-        <div>
-          <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1.5">Таймер на вопрос (сек, 0 = без таймера)</label>
-          <input id="inp-timer" type="number" min="0" max="300" value="0"
-            class="w-full bg-gray-800 text-white rounded-xl px-4 py-3 border border-gray-700 focus:outline-none focus:border-indigo-500" />
-        </div>
-
         <button id="btn-start"
           class="w-full py-4 rounded-xl font-bold text-lg transition
             ${canStart
@@ -160,8 +152,7 @@ export function renderSetup(el: HTMLElement): void {
       const playerName = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim().slice(0, 40);
       const packIdx    = parseInt(selPack.value);
       const setIdx     = parseInt(selChars.value);
-      const timer      = Math.max(0, parseInt((el.querySelector('#inp-timer') as HTMLInputElement).value) || 0);
-      startGame(packs[packIdx]!, sets[setIdx]!, timer, playerName);
+      startGame(packs[packIdx]!, sets[setIdx]!, playerName);
     });
   }
 
@@ -191,7 +182,7 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function startGame(pack: QuestionPack, characterSet: CharacterSet, timerSeconds: number, playerName: string): void {
+function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: string): void {
   const sortedChars = [...characterSet.characters].sort((a, b) => a.cost - b.cost);
   const allShuffled = shuffle(pack.questions);
   const maxCost    = sortedChars.at(-1)?.cost ?? 0;
@@ -208,7 +199,6 @@ function startGame(pack: QuestionPack, characterSet: CharacterSet, timerSeconds:
     spareQuestions: spares,
     currentIndex: 0,
     totalStars: 0,
-    timerSeconds,
     unlockedUpTo: -1,
   };
   upsertSave(game);
@@ -230,7 +220,6 @@ export function resumeGame(id: string): void {
 function renderGameScreen(): void {
   if (!game) return;
 
-  stopTimer();
   boardApi = null;
   boardMoveIdx = 0;
   navChess = null;
@@ -335,9 +324,6 @@ function renderGameScreen(): void {
                 ` : ''}
                 <button id="btn-correct" class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-green-400 rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✔</button>
                 <button id="btn-wrong"   class="flex-1 h-12 bg-gray-800 hover:bg-gray-700 text-red-400   rounded-xl text-2xl transition flex items-center justify-center disabled:opacity-30">✕</button>
-                ${game.timerSeconds > 0 ? `
-                <div id="timer-display" class="flex-[1.5] h-12 flex items-center justify-center text-2xl font-black text-white bg-gray-800 rounded-xl">${game.timerSeconds}</div>
-                ` : ''}
               </div>
               ${bottomControls('h-10')}
             </div>
@@ -366,9 +352,6 @@ function renderGameScreen(): void {
 
             <!-- Question text + show-answer / answer -->
             <div class="px-4 py-4 border-b border-gray-800 flex-shrink-0 flex flex-col gap-3">
-              ${game.timerSeconds > 0
-                ? `<div id="timer-display" class="text-4xl font-black text-white text-center leading-none">${game.timerSeconds}</div>`
-                : ''}
               <div class="text-lg font-semibold text-center leading-snug">
                 ${escapeHtml(q.text)}
               </div>
@@ -485,7 +468,6 @@ function renderGameScreen(): void {
     el.querySelector('#answer-block')?.classList.remove('hidden');
     const ab = el.querySelector('#answer-buttons') as HTMLElement | null;
     if (ab) { ab.classList.remove('hidden'); ab.classList.add('flex'); }
-    stopTimer();
   });
 
   el.querySelector('#btn-correct')?.addEventListener('click', () => handleAnswer(true));
@@ -495,13 +477,11 @@ function renderGameScreen(): void {
 
   el.querySelector('#btn-exit')?.addEventListener('click', () => {
     showModal('Выйти из игры? Прогресс сохранён.', () => {
-      stopTimer();
       if (navKeyHandler) { document.removeEventListener('keydown', navKeyHandler); navKeyHandler = null; }
       _nav('home');
     });
   });
 
-  if (game.timerSeconds > 0) startTimer(game.timerSeconds);
 }
 
 // ── All Characters Overlay ─────────────────────────────────────────────────
@@ -510,11 +490,6 @@ function showAllCharactersOverlay(): void {
   if (!game) return;
 
   document.getElementById('all-chars-overlay')?.remove();
-
-  // Pause timer while overlay is open; resume on close if it was ticking
-  const wasTimerRunning = timerInterval !== null;
-  const savedRemaining  = timerRemaining;
-  stopTimer();
 
   const chars   = game.characterSet.characters;
   const maxCost = chars[chars.length - 1]?.cost ?? 0;
@@ -592,53 +567,17 @@ function showAllCharactersOverlay(): void {
 
   document.body.appendChild(overlay);
 
-  const closeOverlay = () => {
-    overlay.remove();
-    if (wasTimerRunning && savedRemaining > 0) startTimer(savedRemaining);
-  };
+  const closeOverlay = () => { overlay.remove(); };
   overlay.querySelector('#btn-close-overlay')?.addEventListener('click', closeOverlay);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
 }
 
 // ── Timer ──────────────────────────────────────────────────────────────────
 
-function startTimer(seconds: number): void {
-  stopTimer();
-  timerRemaining = seconds;
-  updateTimerDisplay();
-  timerInterval = window.setInterval(() => {
-    timerRemaining--;
-    updateTimerDisplay();
-    if (timerRemaining <= 0) {
-      stopTimer();
-      document.getElementById('btn-show-answer')?.classList.add('hidden');
-      document.getElementById('answer-block')?.classList.remove('hidden');
-    }
-  }, 1000);
-}
-
-function stopTimer(): void {
-  if (timerInterval !== null) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
-}
-
-function updateTimerDisplay(): void {
-  const el = document.getElementById('timer-display');
-  if (!el) return;
-  el.textContent = String(timerRemaining);
-  el.classList.remove('text-red-500', 'text-yellow-400', 'text-white');
-  if      (timerRemaining <= 5)  el.classList.add('text-red-500');
-  else if (timerRemaining <= 10) el.classList.add('text-yellow-400');
-  else                           el.classList.add('text-white');
-}
-
 // ── Answer Handling ────────────────────────────────────────────────────────
 
 function handleAnswer(correct: boolean): void {
   if (!game) return;
-  stopTimer();
   // Prevent double-click
   (document.getElementById('btn-correct') as HTMLButtonElement | null)?.toggleAttribute('disabled', true);
   (document.getElementById('btn-wrong')   as HTMLButtonElement | null)?.toggleAttribute('disabled', true);

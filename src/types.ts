@@ -33,7 +33,6 @@ export interface GameState {
   spareQuestions: Question[];
   currentIndex: number;
   totalStars: number;
-  timerSeconds: number;
   unlockedUpTo: number;
 }
 
