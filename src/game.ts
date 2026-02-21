@@ -572,8 +572,6 @@ function showAllCharactersOverlay(): void {
   overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
 }
 
-// ── Timer ──────────────────────────────────────────────────────────────────
-
 // ── Answer Handling ────────────────────────────────────────────────────────
 
 function handleAnswer(correct: boolean): void {
