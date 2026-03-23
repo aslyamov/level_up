@@ -98,6 +98,20 @@ export function renderSetup(el: HTMLElement): void {
         </div>
         ` : ''}
 
+        <div>
+          <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1.5">Порядок вопросов</label>
+          <div class="flex rounded-xl overflow-hidden border border-gray-700">
+            <button id="btn-order-seq"
+              class="flex-1 py-3 font-semibold text-sm transition bg-indigo-600 text-white">
+              По порядку
+            </button>
+            <button id="btn-order-rnd"
+              class="flex-1 py-3 font-semibold text-sm transition bg-gray-800 text-gray-400">
+              Случайно
+            </button>
+          </div>
+        </div>
+
         <button id="btn-start"
           class="w-full py-4 rounded-xl font-bold text-lg transition
             ${canStart
@@ -173,12 +187,24 @@ export function renderSetup(el: HTMLElement): void {
     selChars.addEventListener('change', updateCompat);
     updateCompat();
 
+    const btnSeq = el.querySelector('#btn-order-seq') as HTMLButtonElement;
+    const btnRnd = el.querySelector('#btn-order-rnd') as HTMLButtonElement;
+    let randomOrder = false;
+
+    const setOrderMode = (rnd: boolean) => {
+      randomOrder = rnd;
+      btnSeq.className = `flex-1 py-3 font-semibold text-sm transition ${!rnd ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-400'}`;
+      btnRnd.className = `flex-1 py-3 font-semibold text-sm transition ${ rnd ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-400'}`;
+    };
+    btnSeq.addEventListener('click', () => setOrderMode(false));
+    btnRnd.addEventListener('click', () => setOrderMode(true));
+
     el.querySelector('#btn-start')?.addEventListener('click', () => {
       const playerName   = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim().slice(0, 40);
       const packIdx      = parseInt(selPack.value);
       const setIdx       = parseInt(selChars.value);
       const startCharIdx = selStartChar ? parseInt(selStartChar.value) : -1;
-      startGame(packs[packIdx]!, sets[setIdx]!, playerName, startCharIdx);
+      startGame(packs[packIdx]!, sets[setIdx]!, playerName, startCharIdx, randomOrder);
     });
   }
 
@@ -208,10 +234,10 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: string, startCharIdx = -1): void {
+function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: string, startCharIdx = -1, randomOrder = false): void {
   const sortedChars  = [...characterSet.characters].sort((a, b) => a.cost - b.cost);
   const initialStars = startCharIdx >= 0 ? (sortedChars[startCharIdx]?.cost ?? 0) : 0;
-  const allShuffled  = shuffle(pack.questions);
+  const allShuffled  = randomOrder ? shuffle(pack.questions) : [...pack.questions];
   const maxCost      = sortedChars.at(-1)?.cost ?? 0;
   const minNeeded    = Math.ceil((maxCost - initialStars) / pack.starsPerCorrect);
   const hasExtra     = pack.questions.length > sortedChars.length;
