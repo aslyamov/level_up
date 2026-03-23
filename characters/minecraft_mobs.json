@@ -1,0 +1,25 @@
+{
+  "title": "Minecraft: Враги",
+  "characters": [
+    {"name": "Зомби",        "cost": 3,  "imageUrl": "https://minecraft.wiki/images/Zombie_JE3_BE2.png"},
+    {"name": "Скелет",       "cost": 6,  "imageUrl": "https://minecraft.wiki/images/Skeleton_JE6_BE4.png"},
+    {"name": "Паук",         "cost": 9,  "imageUrl": "https://minecraft.wiki/images/Spider_JE5_BE4.png"},
+    {"name": "Крипер",       "cost": 12, "imageUrl": "https://minecraft.wiki/images/Creeper_JE3_BE1.png"},
+    {"name": "Магмовый куб", "cost": 15, "imageUrl": "https://minecraft.wiki/images/Magma_Cube_JE2_BE2.png"},
+    {"name": "Ведьма",       "cost": 18, "imageUrl": "https://minecraft.wiki/images/Witch_JE3.png"},
+    {"name": "Фантом",       "cost": 21, "imageUrl": "https://minecraft.wiki/images/Phantom_JE2.gif"},
+    {"name": "Эндермен",     "cost": 24, "imageUrl": "https://minecraft.wiki/images/Enderman_JE3_BE1.png"},
+    {"name": "Гаст",         "cost": 27, "imageUrl": "https://minecraft.wiki/images/Ghast_JE3_BE3.gif"},
+    {"name": "Блейз",        "cost": 30, "imageUrl": "https://minecraft.wiki/images/Blaze_JE2.gif"},
+    {"name": "Иссушённый скелет", "cost": 33, "imageUrl": "https://minecraft.wiki/images/Wither_Skeleton_JE4_BE3.png"},
+    {"name": "Разбойник",    "cost": 36, "imageUrl": "https://minecraft.wiki/images/Pillager_JE3.png"},
+    {"name": "Каратель",     "cost": 39, "imageUrl": "https://minecraft.wiki/images/Vindicator_JE4.png"},
+    {"name": "Заклинатель",  "cost": 42, "imageUrl": "https://minecraft.wiki/images/Evoker_JE3.png"},
+    {"name": "Старший страж","cost": 45, "imageUrl": "https://minecraft.wiki/images/Elder_Guardian_JE2_BE2.gif"},
+    {"name": "Равагер",      "cost": 48, "imageUrl": "https://minecraft.wiki/images/Ravager_JE1.png"},
+    {"name": "Шалкер",       "cost": 51, "imageUrl": "https://minecraft.wiki/images/Shulker_JE1_BE1.png"},
+    {"name": "Хранитель",    "cost": 54, "imageUrl": "https://minecraft.wiki/images/Warden.gif"},
+    {"name": "Иссушитель",   "cost": 57, "imageUrl": "https://minecraft.wiki/images/Wither_JE2_BE2.png"},
+    {"name": "Дракон Края",  "cost": 60, "imageUrl": "https://minecraft.wiki/images/Ender_Dragon.gif"}
+  ]
+}
