@@ -89,6 +89,15 @@ export function renderSetup(el: HTMLElement): void {
           <div id="compat-warning"></div>
         </div>
 
+        ${sets.length > 0 ? `
+        <div>
+          <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1.5">Начать с персонажа</label>
+          <select id="sel-start-char" class="w-full bg-gray-800 text-white rounded-xl px-4 py-3 border border-gray-700 focus:outline-none focus:border-indigo-500">
+            <option value="-1">С начала (0★)</option>
+          </select>
+        </div>
+        ` : ''}
+
         <button id="btn-start"
           class="w-full py-4 rounded-xl font-bold text-lg transition
             ${canStart
@@ -108,8 +117,24 @@ export function renderSetup(el: HTMLElement): void {
   `;
 
   if (canStart) {
-    const selPack  = el.querySelector('#sel-pack')  as HTMLSelectElement;
-    const selChars = el.querySelector('#sel-chars') as HTMLSelectElement;
+    const selPack      = el.querySelector('#sel-pack')       as HTMLSelectElement;
+    const selChars     = el.querySelector('#sel-chars')      as HTMLSelectElement;
+    const selStartChar = el.querySelector('#sel-start-char') as HTMLSelectElement | null;
+
+    const updateStartChar = () => {
+      if (!selStartChar) return;
+      const s = sets[parseInt(selChars.value)];
+      if (!s) return;
+      const sorted = [...s.characters].sort((a, b) => a.cost - b.cost);
+      selStartChar.innerHTML =
+        `<option value="-1">С начала (0★)</option>` +
+        sorted.map((c, i) =>
+          `<option value="${i}">${escapeHtml(c.name)} (${c.cost}★)</option>`
+        ).join('');
+    };
+
+    selChars.addEventListener('change', updateStartChar);
+    updateStartChar();
 
     const updateCompat = () => {
       const p       = packs[parseInt(selPack.value)];
@@ -149,10 +174,11 @@ export function renderSetup(el: HTMLElement): void {
     updateCompat();
 
     el.querySelector('#btn-start')?.addEventListener('click', () => {
-      const playerName = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim().slice(0, 40);
-      const packIdx    = parseInt(selPack.value);
-      const setIdx     = parseInt(selChars.value);
-      startGame(packs[packIdx]!, sets[setIdx]!, playerName);
+      const playerName   = ((el.querySelector('#inp-name') as HTMLInputElement).value).trim().slice(0, 40);
+      const packIdx      = parseInt(selPack.value);
+      const setIdx       = parseInt(selChars.value);
+      const startCharIdx = selStartChar ? parseInt(selStartChar.value) : -1;
+      startGame(packs[packIdx]!, sets[setIdx]!, playerName, startCharIdx);
     });
   }
 
@@ -182,14 +208,15 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: string): void {
-  const sortedChars = [...characterSet.characters].sort((a, b) => a.cost - b.cost);
-  const allShuffled = shuffle(pack.questions);
-  const maxCost    = sortedChars.at(-1)?.cost ?? 0;
-  const minNeeded  = Math.ceil(maxCost / pack.starsPerCorrect);
-  const hasExtra   = pack.questions.length > sortedChars.length;
-  const questions  = hasExtra ? allShuffled.slice(0, minNeeded) : allShuffled;
-  const spares     = hasExtra ? allShuffled.slice(minNeeded)    : [];
+function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: string, startCharIdx = -1): void {
+  const sortedChars  = [...characterSet.characters].sort((a, b) => a.cost - b.cost);
+  const initialStars = startCharIdx >= 0 ? (sortedChars[startCharIdx]?.cost ?? 0) : 0;
+  const allShuffled  = shuffle(pack.questions);
+  const maxCost      = sortedChars.at(-1)?.cost ?? 0;
+  const minNeeded    = Math.ceil((maxCost - initialStars) / pack.starsPerCorrect);
+  const hasExtra     = pack.questions.length > sortedChars.length;
+  const questions    = hasExtra ? allShuffled.slice(0, Math.max(minNeeded, 1)) : allShuffled;
+  const spares       = hasExtra ? allShuffled.slice(Math.max(minNeeded, 1))    : [];
   game = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
     playerName,
@@ -198,8 +225,8 @@ function startGame(pack: QuestionPack, characterSet: CharacterSet, playerName: s
     shuffledQuestions: questions,
     spareQuestions: spares,
     currentIndex: 0,
-    totalStars: 0,
-    unlockedUpTo: -1,
+    totalStars: initialStars,
+    unlockedUpTo: startCharIdx,
   };
   upsertSave(game);
   _nav('game');

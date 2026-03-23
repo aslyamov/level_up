@@ -1,0 +1,60 @@
+{
+  "title": "В какую силу я играю 1",
+  "starsPerCorrect": 3,
+  "questions": [
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbqkbnr/pppp2pp/5p2/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["f3e5"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbqkbnr/pppp2pp/8/4p3/4P3/8/PPPP1PPP/RNBQKB1R w KQkq - 0 4",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["d1h5"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/ppppk1pp/8/4p2Q/4P3/8/PPPP1PPP/RNB1KBNR w KQ - 2 5",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["h5e5"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/pppp1kpp/8/4Q3/4P3/8/PPPP1PPP/RNB1KBNR w KQ - 1 6",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["f1c4"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/pppp2pp/6k1/4Q3/2B1P3/8/PPPP1PPP/RNB1K1NR w KQ - 3 7",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["e5f5"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/pppp2pp/7k/5Q2/2B1P3/8/PPPP1PPP/RNB1K1NR w KQ - 5 8",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["d2d4"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/pppp3p/7k/5Qp1/2BPP3/8/PPP2PPP/RNB1K1NR w KQ - 0 9",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["h2h4"]
+    },
+    {
+      "text": "Ход белых. Лучший ход?",
+      "fen": "rnbq1bnr/ppp4p/7k/3p1Qp1/2BPP2P/8/PPP2PP1/RNB1K1NR w KQ - 0 10",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["f5f7"]
+    },
+    {
+      "text": "Ход белых. Мат!",
+      "fen": "rnbq1bnr/ppp2Q1p/7k/6p1/2pPP2P/8/PPP2PP1/RNB1K1NR w KQ - 0 11",
+      "boardOrientation": "white",
+      "solutionMovesUci": ["h4g5"]
+    }
+  ]
+}
