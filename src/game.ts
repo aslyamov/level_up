@@ -287,7 +287,7 @@ function renderGameScreen(): void {
 
   const img = (url?: string, cls = '') => {
     const safe = url ? sanitizeImageUrl(url) : '';
-    return safe ? `<img src="${safe}" alt="" class="${cls}" />` : null;
+    return safe ? `<img src="${safe}" alt="" class="${cls}" referrerpolicy="no-referrer" />` : null;
   };
 
   // ── helpers for character cards (used in both layouts) ──────────────────
@@ -295,7 +295,7 @@ function renderGameScreen(): void {
     if (!c) return `<span class="text-5xl opacity-30">🔒</span>`;
     const s = c.imageUrl ? sanitizeImageUrl(c.imageUrl) : '';
     return s
-      ? `<img src="${s}" alt="" class="w-full h-full object-contain${grayscale ? ' grayscale' : ''}" />`
+      ? `<img src="${s}" alt="" class="w-full h-full object-contain${grayscale ? ' grayscale' : ''}" referrerpolicy="no-referrer" />`
       : `<span class="text-5xl">👤</span>`;
   };
   const renderCharMeta = (c: typeof cur, muted = false) =>
@@ -558,7 +558,7 @@ function showAllCharactersOverlay(): void {
     const fallbackCls = `w-24 h-24 rounded-xl mb-2 flex items-center justify-center text-4xl
       ${unlocked ? 'bg-gray-700' : 'bg-gray-800 opacity-30'}`;
     return safe
-      ? `<img src="${safe}" alt="" class="${cls}" />`
+      ? `<img src="${safe}" alt="" class="${cls}" referrerpolicy="no-referrer" />`
       : `<div class="${fallbackCls}">${unlocked ? '👤' : '🔒'}</div>`;
   };
 
@@ -674,7 +674,7 @@ function showUnlockOverlay(char: Character, onContinue: () => void): void {
       <div class="text-yellow-400 text-3xl font-black mb-4">Новый персонаж!</div>
       ${safeUrl
         ? `<img src="${safeUrl}" alt="${escapeHtml(char.name)}"
-             class="w-36 h-36 object-contain mx-auto mb-4 rounded-2xl" />`
+             class="w-36 h-36 object-contain mx-auto mb-4 rounded-2xl" referrerpolicy="no-referrer" />`
         : `<div class="w-36 h-36 bg-gray-700 rounded-2xl mx-auto mb-4 flex items-center justify-center text-6xl">⭐</div>`}
       <div class="text-3xl font-bold text-white mb-1">${escapeHtml(char.name)}</div>
       <div class="text-gray-400 text-sm mb-8">Открыт за ${char.cost} звёзд</div>
@@ -728,7 +728,7 @@ function renderResults(): void {
   const imgTag = (url: string | undefined, cls: string) => {
     const safe = url ? sanitizeImageUrl(url) : '';
     return safe
-      ? `<img src="${safe}" alt="" class="${cls}" />`
+      ? `<img src="${safe}" alt="" class="${cls}" referrerpolicy="no-referrer" />`
       : `<div class="${cls} bg-gray-700 flex items-center justify-center text-4xl">⭐</div>`;
   };
 
