@@ -1,0 +1,105 @@
+{
+  "title": "Покемоны",
+  "characters": [
+    {
+      "name": "Мью",
+      "cost": 3,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/c/c8/0151.png/revision/latest?cb=20241005071338"
+    },
+    {
+      "name": "Хо-Ох",
+      "cost": 6,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/b/b4/0250.png/revision/latest?cb=20241005083451"
+    },
+    {
+      "name": "Лугия",
+      "cost": 9,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/8/8d/0249.png/revision/latest?cb=20241005083429"
+    },
+    {
+      "name": "Реширам",
+      "cost": 12,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/d/d4/0643.png/revision/latest?cb=20241007034649"
+    },
+    {
+      "name": "Зекром",
+      "cost": 15,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/a/a3/0644.png/revision/latest?cb=20241007034657"
+    },
+    {
+      "name": "Кюрем",
+      "cost": 18,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/f/fa/0646.png/revision/latest?cb=20241007034830"
+    },
+    {
+      "name": "Солгалео",
+      "cost": 21,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/4/48/0791.png/revision/latest?cb=20241009010738"
+    },
+    {
+      "name": "Лунала",
+      "cost": 24,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/9/95/0792.png/revision/latest?cb=20241009010752"
+    },
+    {
+      "name": "Замазента",
+      "cost": 27,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/1/18/0889A.png/revision/latest?cb=20241009232908"
+    },
+    {
+      "name": "Засиан",
+      "cost": 30,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/f/f5/0888A.png/revision/latest?cb=20241009232839"
+    },
+    {
+      "name": "Некрозма",
+      "cost": 33,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/9/98/0800.png/revision/latest?cb=20241009011617"
+    },
+    {
+      "name": "Кайогр",
+      "cost": 36,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/7/73/0382.png/revision/latest?cb=20241006032159"
+    },
+    {
+      "name": "Гроудон",
+      "cost": 39,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/5/52/0383.png/revision/latest?cb=20241006032238"
+    },
+    {
+      "name": "Палкия",
+      "cost": 42,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/7/71/0484.png/revision/latest?cb=20241006052559"
+    },
+    {
+      "name": "Диалга",
+      "cost": 45,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/b/b5/0483.png/revision/latest?cb=20241006052537"
+    },
+    {
+      "name": "Гиратина",
+      "cost": 48,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/c/c9/0487.png/revision/latest?cb=20241006052933"
+    },
+    {
+      "name": "Этернатус",
+      "cost": 51,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/3/37/0890.png/revision/latest?cb=20241009232918"
+    },
+    {
+      "name": "Мьюту",
+      "cost": 54,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/6/69/0150.png/revision/latest?cb=20241005071301"
+    },
+    {
+      "name": "Рейкваза",
+      "cost": 57,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/c/ca/0384.png/revision/latest?cb=20241006032308"
+    },
+    {
+      "name": "Арсеус",
+      "cost": 60,
+      "imageUrl": "https://static.wikia.nocookie.net/pokemon/images/5/54/0493.png/revision/latest?cb=20241006053956"
+    }
+  ]
+}
